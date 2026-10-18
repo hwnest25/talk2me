@@ -92,8 +92,8 @@ The full vision includes professional domain tracks (medicine, law, aviation), c
 
 ![Overall Use Case Diagram](./use_case_diagram.svg)
 
-- **Green:** Planned for Semester 1 (Phase 1)
-- **Yellow:** Planned for Semester 2 (Phase 2)
+- **Green:** Planned for Phase 1
+- **Yellow:** Planned for Phase 2
 
 ### 2.3 Technology Stack
 
@@ -127,7 +127,7 @@ The full vision includes professional domain tracks (medicine, law, aviation), c
 ### 3.1 Functionality
 This section lists the use cases visible in the Overall Use Case Diagram. Functional requirement detail for each use case will be added in linked use case documents as implementation progresses.
 
-**Semester 1 (Phase 1) — planned for implementation:**
+**Phase 1 — planned for implementation:**
 - 3.1.1 Onboard and set up profile
 - 3.1.2 Record spoken journal entry
 - 3.1.3 Transcribe audio entry *(included in 3.1.2)*
@@ -140,7 +140,7 @@ This section lists the use cases visible in the Overall Use Case Diagram. Functi
 - 3.1.10 Select speaking prompt
 - 3.1.11 Select target language
 
-**Semester 2 (Phase 2) — deferred:**
+**Phase 2 — deferred:**
 - 3.1.12 Sync learner profile across devices
 - 3.1.13 Set learning goals
 - 3.1.14 Configure feedback detail level
