@@ -26,6 +26,8 @@ Blog: [talk2me4.wordpress.com](https://talk2me4.wordpress.com)
 
 Currently in the **Inception phase** (Week 3). The use case diagram and Software Requirements Specification are complete. User research is underway.
 
+Phase 1 targets the core record-transcribe-feedback loop. Phase 2 adds personalisation, multi-language support, and cross-device sync.
+
 ## Repository Structure
 
 ```
@@ -49,4 +51,4 @@ Source code will be added as development begins in Phase 1.
 
 ## Course Context
 
-This project is built as part of the SE1 course using the Rational Unified Process (RUP). Development is structured across two semesters with Phase 1 targeting the core record-transcribe-feedback loop.
+This project is built as part of the SE1 course using the Rational Unified Process (RUP). Development is structured across two phases with Phase 1 targeting the core record-transcribe-feedback loop.
