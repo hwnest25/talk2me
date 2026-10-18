@@ -43,6 +43,10 @@ Source code will be added as development begins in Phase 1.
 - [Software Requirements Specification](./docs/SoftwareRequirementsSpecification.md)
 - [Overall Use Case Diagram](./docs/use_case_diagram.svg)
 
+## Overall Use Case Diagram
+
+![Overall Use Case Diagram](./docs/use_case_diagram.png)
+
 ## Course Context
 
 This project is built as part of the SE1 course using the Rational Unified Process (RUP). Development is structured across two semesters with Phase 1 targeting the core record-transcribe-feedback loop.
