@@ -1,0 +1,48 @@
+# Talk2Me
+
+A mobile app that helps language learners build spoken fluency through a simple daily habit. Record a short spoken journal entry in your target language, receive AI-powered feedback on grammar and vocabulary, and build a personalised learner profile that improves with every session.
+
+## Team
+
+| Name | Role |
+| ---- | ---- |
+| Hope Wilson | Process Engineer / Designer |
+| Rodrigo Chavez | Test Manager / User Researcher |
+
+Blog: [talk2me4.wordpress.com](https://talk2me4.wordpress.com)
+
+## Tech Stack
+
+| Layer | Technology |
+| ----- | ---------- |
+| Mobile | Flutter (Dart) |
+| Speech-to-Text | OpenAI Whisper (on-device) |
+| AI Feedback | Anthropic Claude API |
+| Local Storage | SQLite |
+| Backend API | Python / FastAPI |
+| Cloud | TBD (Railway / Render) |
+
+## Project Status
+
+Currently in the **Inception phase** (Week 3). The use case diagram and Software Requirements Specification are complete. User research is underway.
+
+## Repository Structure
+
+```
+talk2me/
+  docs/
+    SoftwareRequirementsSpecification.md   Full SRS
+    use_case_diagram.svg                   Overall use case diagram (rendered)
+    use_case_diagram.drawio                Overall use case diagram (source)
+```
+
+Source code will be added as development begins in Phase 1.
+
+## Documentation
+
+- [Software Requirements Specification](./docs/SoftwareRequirementsSpecification.md)
+- [Overall Use Case Diagram](./docs/use_case_diagram.svg)
+
+## Course Context
+
+This project is built as part of the SE1 course using the Rational Unified Process (RUP). Development is structured across two semesters with Phase 1 targeting the core record-transcribe-feedback loop.
