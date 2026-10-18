@@ -1,0 +1,180 @@
+<mxGraphModel dx="1422" dy="762" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- Title -->
+    <mxCell id="title" value="Talk2Me — Overall Use Case Diagram" style="text;html=1;fontSize=15;fontStyle=1;align=center;fillColor=none;strokeColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="250" y="20" width="500" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- Legend -->
+    <mxCell id="legend-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+      <mxGeometry x="920" y="60" width="180" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="legend-title" value="Legend" style="text;html=1;fontSize=11;fontStyle=1;align=center;fillColor=none;strokeColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="920" y="64" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="legend-green" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="932" y="90" width="24" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="legend-green-label" value="Semester 1 (Phase 1)" style="text;html=1;fontSize=10;align=left;fillColor=none;strokeColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="962" y="88" width="130" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="legend-yellow" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="932" y="114" width="24" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="legend-yellow-label" value="Semester 2 (Phase 2)" style="text;html=1;fontSize=10;align=left;fillColor=none;strokeColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="962" y="112" width="130" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- System boundary -->
+    <mxCell id="boundary" value="Talk2Me" style="swimlane;startSize=28;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=13;fontColor=#333333;swimlaneLine=1;" vertex="1" parent="1">
+      <mxGeometry x="200" y="55" width="700" height="740" as="geometry" />
+    </mxCell>
+
+    <!-- ── SUBSYSTEM: Onboarding ── -->
+    <mxCell id="sub-onboard" value="Onboarding" style="swimlane;startSize=24;fillColor=#ffffff;strokeColor=#999999;fontSize=11;fontStyle=1;fontColor=#333333;" vertex="1" parent="boundary">
+      <mxGeometry x="30" y="40" width="300" height="110" as="geometry" />
+    </mxCell>
+    <mxCell id="uc1" value="Onboard and set up profile" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#000000;" vertex="1" parent="sub-onboard">
+      <mxGeometry x="20" y="34" width="170" height="44" as="geometry" />
+    </mxCell>
+    <mxCell id="uc11" value="Select target language" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#000000;" vertex="1" parent="sub-onboard">
+      <mxGeometry x="20" y="54" width="170" height="44" as="geometry" />
+    </mxCell>
+
+    <!-- ── SUBSYSTEM: Journal ── -->
+    <mxCell id="sub-journal" value="Journal" style="swimlane;startSize=24;fillColor=#ffffff;strokeColor=#999999;fontSize=11;fontStyle=1;fontColor=#333333;" vertex="1" parent="boundary">
+      <mxGeometry x="370" y="40" width="300" height="110" as="geometry" />
+    </mxCell>
+    <mxCell id="uc2" value="Record spoken journal entry" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#000000;" vertex="1" parent="sub-journal">
+      <mxGeometry x="20" y="34" width="170" height="44" as="geometry" />
+    </mxCell>
+    <mxCell id="uc10" value="Select speaking prompt" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#000000;" vertex="1" parent="sub-journal">
+      <mxGeometry x="20" y="54" width="170" height="44" as="geometry" />
+    </mxCell>
+
+    <!-- ── SUBSYSTEM: Transcription (include) ── -->
+    <mxCell id="sub-transcribe" value="Transcription" style="swimlane;startSize=24;fillColor=#ffffff;strokeColor=#999999;fontSize=11;fontStyle=1;fontColor=#333333;" vertex="1" parent="boundary">
+      <mxGeometry x="370" y="170" width="300" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="uc3" value="Transcribe audio entry" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#000000;" vertex="1" parent="sub-transcribe">
+      <mxGeometry x="60" y="24" width="170" height="44" as="geometry" />
+    </mxCell>
+
+    <!-- ── SUBSYSTEM: Feedback ── -->
+    <mxCell id="sub-feedback" value="Feedback" style="swimlane;startSize=24;fillColor=#ffffff;strokeColor=#999999;fontSize=11;fontStyle=1;fontColor=#333333;" vertex="1" parent="boundary">
+      <mxGeometry x="30" y="170" width="300" height="110" as="geometry" />
+    </mxCell>
+    <mxCell id="uc4" value="Receive grammar feedback" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#000000;" vertex="1" parent="sub-feedback">
+      <mxGeometry x="20" y="30" width="170" height="44" as="geometry" />
+    </mxCell>
+    <mxCell id="uc5" value="Receive vocabulary feedback" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#000000;" vertex="1" parent="sub-feedback">
+      <mxGeometry x="20" y="54" width="170" height="44" as="geometry" />
+    </mxCell>
+
+    <!-- ── SUBSYSTEM: Progress ── -->
+    <mxCell id="sub-progress" value="Progress" style="swimlane;startSize=24;fillColor=#ffffff;strokeColor=#999999;fontSize=11;fontStyle=1;fontColor=#333333;" vertex="1" parent="boundary">
+      <mxGeometry x="30" y="310" width="300" height="170" as="geometry" />
+    </mxCell>
+    <mxCell id="uc6" value="View entry history" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#000000;" vertex="1" parent="sub-progress">
+      <mxGeometry x="20" y="30" width="170" height="44" as="geometry" />
+    </mxCell>
+    <mxCell id="uc7" value="View learner profile" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#000000;" vertex="1" parent="sub-progress">
+      <mxGeometry x="20" y="82" width="170" height="44" as="geometry" />
+    </mxCell>
+    <mxCell id="uc8" value="Review daily vocabulary list" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#000000;" vertex="1" parent="sub-progress">
+      <mxGeometry x="20" y="134" width="170" height="44" as="geometry" />
+    </mxCell>
+    <!-- Note: uc9 View entry streak placed in Progress too -->
+    <mxCell id="uc9" value="View entry streak" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#000000;" vertex="1" parent="sub-progress">
+      <mxGeometry x="110" y="30" width="170" height="44" as="geometry" />
+    </mxCell>
+
+    <!-- ── SUBSYSTEM: Phase 2 ── -->
+    <mxCell id="sub-p2" value="Phase 2 Features" style="swimlane;startSize=24;fillColor=#fffde7;strokeColor=#d6b656;fontSize=11;fontStyle=1;fontColor=#333333;" vertex="1" parent="boundary">
+      <mxGeometry x="30" y="510" width="630" height="190" as="geometry" />
+    </mxCell>
+    <mxCell id="uc12" value="Sync learner profile across devices" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontColor=#000000;" vertex="1" parent="sub-p2">
+      <mxGeometry x="20" y="34" width="180" height="44" as="geometry" />
+    </mxCell>
+    <mxCell id="uc13" value="Set learning goals" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontColor=#000000;" vertex="1" parent="sub-p2">
+      <mxGeometry x="220" y="34" width="170" height="44" as="geometry" />
+    </mxCell>
+    <mxCell id="uc14" value="Configure feedback detail level" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontColor=#000000;" vertex="1" parent="sub-p2">
+      <mxGeometry x="20" y="110" width="180" height="44" as="geometry" />
+    </mxCell>
+    <mxCell id="uc15" value="Receive pronunciation feedback" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontColor=#000000;" vertex="1" parent="sub-p2">
+      <mxGeometry x="220" y="110" width="170" height="44" as="geometry" />
+    </mxCell>
+
+    <!-- ── Actor: Learner (UML stick figure) ── -->
+    <mxCell id="actor" value="Learner" style="shape=mxgraph.uml.actor;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="80" y="360" width="50" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- ── Include relationship: Record -> Transcribe ── -->
+    <mxCell id="inc1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;dashed=1;strokeColor=#666666;exitX=1;exitY=0.5;exitDX=0;exitDY=0;" edge="1" source="uc2" target="uc3" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="inc1-label" value="&lt;&lt;include&gt;&gt;" style="text;html=1;fontSize=10;align=center;fillColor=none;strokeColor=none;fontStyle=2;fontColor=#333333;" vertex="1" parent="1">
+      <mxGeometry x="570" y="118" width="90" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- ── Associations: Actor to each use case (curved, no arrows) ── -->
+
+    <!-- Onboarding -->
+    <mxCell id="e1" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;endArrow=none;exitX=1;exitY=0.3;exitDX=0;exitDY=0;entryX=0;entryY=0.5;entryDX=0;entryDY=0;curved=1;strokeColor=#555555;" edge="1" source="actor" target="uc1" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e11" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;endArrow=none;exitX=1;exitY=0.3;exitDX=0;exitDY=0;entryX=0;entryY=0.5;entryDX=0;entryDY=0;curved=1;strokeColor=#555555;" edge="1" source="actor" target="uc11" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Journal -->
+    <mxCell id="e2" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;endArrow=none;curved=1;strokeColor=#555555;" edge="1" source="actor" target="uc2" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e10" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;endArrow=none;curved=1;strokeColor=#555555;" edge="1" source="actor" target="uc10" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Feedback -->
+    <mxCell id="e4" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;endArrow=none;curved=1;strokeColor=#555555;" edge="1" source="actor" target="uc4" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e5" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;endArrow=none;curved=1;strokeColor=#555555;" edge="1" source="actor" target="uc5" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Progress -->
+    <mxCell id="e6" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;endArrow=none;curved=1;strokeColor=#555555;" edge="1" source="actor" target="uc6" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e7" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;endArrow=none;curved=1;strokeColor=#555555;" edge="1" source="actor" target="uc7" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e8" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;endArrow=none;curved=1;strokeColor=#555555;" edge="1" source="actor" target="uc8" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e9" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;endArrow=none;curved=1;strokeColor=#555555;" edge="1" source="actor" target="uc9" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Phase 2 -->
+    <mxCell id="e12" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;endArrow=none;curved=1;strokeColor=#555555;" edge="1" source="actor" target="uc12" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e13" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;endArrow=none;curved=1;strokeColor=#555555;" edge="1" source="actor" target="uc13" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e14" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;endArrow=none;curved=1;strokeColor=#555555;" edge="1" source="actor" target="uc14" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e15" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;endArrow=none;curved=1;strokeColor=#555555;" edge="1" source="actor" target="uc15" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>
