@@ -6,8 +6,8 @@ A mobile app that helps language learners build spoken fluency through a simple 
 
 | Name | Role |
 | ---- | ---- |
-| Hope Wilson | Process Engineer / Designer |
-| Rodrigo Chavez | Test Manager / User Researcher |
+| Hope | Software Developer / Process Engineer / Designer |
+| Rodrigo | Software Developer / Test Manager / User Researcher |
 
 Blog: [talk2me4.wordpress.com](https://talk2me4.wordpress.com)
 
@@ -34,8 +34,8 @@ Phase 1 targets the core record-transcribe-feedback loop. Phase 2 adds personali
 talk2me/
   docs/
     SoftwareRequirementsSpecification.md   Full SRS
-    use_case_diagram.svg                   Overall use case diagram (rendered)
-    use_case_diagram.drawio                Overall use case diagram (source)
+    use_case_diagram.svg                   Overall use case diagram (source)
+    use_case_diagram.png                   Overall use case diagram (rendered)
 ```
 
 Source code will be added as development begins in Phase 1.
@@ -47,8 +47,4 @@ Source code will be added as development begins in Phase 1.
 
 ## Overall Use Case Diagram
 
-![Overall Use Case Diagram](./docs/use_case_diagram.png)
-
-## Course Context
-
-This project is built as part of the SE1 course using the Rational Unified Process (RUP). Development is structured across two phases with Phase 1 targeting the core record-transcribe-feedback loop.
+![Overall Use Case Diagram](docs/use_case_diagram.png)

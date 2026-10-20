@@ -1,4 +1,12 @@
-# Talk2Me — Software Requirements Specification
+# Talk2Me: Software Requirements Specification
+
+## Version History
+
+| Version | Date | Author | Changes |
+| ------- | ---- | ------ | ------- |
+| 1.0 | October 2026 | Hope, Rodrigo | Initial SRS: vision, UCD, non-functional requirements |
+
+---
 
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
@@ -26,6 +34,8 @@
     - [Legal, Copyright and Other Notices](#311-legal-copyright-and-other-notices)
     - [Applicable Standards](#312-applicable-standards)
 - [Supporting Information](#4-supporting-information)
+- [AI Reflection](#4-ai-reflection)
+- [Supporting Information](#5-supporting-information)
 
 ---
 
@@ -61,7 +71,6 @@ Planned subsystems:
 | STT | Speech-to-Text |
 | API | Application Programming Interface |
 | SQLite | Lightweight relational database for on-device storage |
-| RUP | Rational Unified Process |
 | PRD | Product Requirements Document |
 | MVP | Minimum Viable Product |
 
@@ -90,27 +99,30 @@ The full vision includes professional domain tracks (medicine, law, aviation), c
 
 ### 2.2 Use Case Diagram
 
-![Overall Use Case Diagram](./use_case_diagram.svg)
+<img src="use_case_diagram.png" alt="Overall Use Case Diagram" width="700"/>
 
-- **Green:** Planned for Phase 1
-- **Yellow:** Planned for Phase 2
+- **Blue:** Planned for Phase 1
+- **Purple:** Planned for Phase 2
+
+- **Blue:** Planned for Phase 1
+- **Purple:** Planned for Phase 2
 
 ### 2.3 Technology Stack
 
 **Mobile Frontend:**
-- Flutter (Dart) — cross-platform iOS and Android from a single codebase
+- Flutter (Dart): cross-platform iOS and Android from a single codebase
 
 **Speech-to-Text:**
-- OpenAI Whisper (on-device, tiny/base model) — no audio egress
+- OpenAI Whisper (on-device, tiny/base model): no audio egress
 
 **AI Feedback:**
-- Anthropic Claude API — structured grammar, vocabulary, and register feedback
+- Anthropic Claude API: structured grammar, vocabulary, and register feedback
 
 **Local Storage:**
-- SQLite — learner profile, entry history, error patterns stored on-device
+- SQLite: learner profile, entry history, error patterns stored on-device
 
 **Backend API:**
-- Python / FastAPI — thin stateless layer handling Claude integration and prompt delivery
+- Python / FastAPI: thin stateless layer handling Claude integration and prompt delivery
 
 **Cloud Infrastructure:**
 - TBD (Railway or Render for Phase 1)
@@ -127,12 +139,12 @@ The full vision includes professional domain tracks (medicine, law, aviation), c
 ### 3.1 Functionality
 This section lists the use cases visible in the Overall Use Case Diagram. Functional requirement detail for each use case will be added in linked use case documents as implementation progresses.
 
-**Phase 1 — planned for implementation:**
-- 3.1.1 Onboard and set up profile
-- 3.1.2 Record spoken journal entry
-- 3.1.3 Transcribe audio entry *(included in 3.1.2)*
-- 3.1.4 Receive grammar feedback
-- 3.1.5 Receive vocabulary feedback
+**Phase 1 (planned for implementation):**
+- 3.1.1 Onboard and set up profile ⭐
+- 3.1.2 Record spoken journal entry ⭐
+- 3.1.3 Transcribe audio entry *(included in 3.1.2)* ⭐
+- 3.1.4 Receive grammar feedback ⭐
+- 3.1.5 Receive vocabulary feedback ⭐
 - 3.1.6 View entry history
 - 3.1.7 View learner profile
 - 3.1.8 Review daily vocabulary list
@@ -140,7 +152,9 @@ This section lists the use cases visible in the Overall Use Case Diagram. Functi
 - 3.1.10 Select speaking prompt
 - 3.1.11 Select target language
 
-**Phase 2 — deferred:**
+*⭐ Scoped for December delivery*
+
+**Phase 2 (deferred):**
 - 3.1.12 Sync learner profile across devices
 - 3.1.13 Set learning goals
 - 3.1.14 Configure feedback detail level
@@ -155,7 +169,7 @@ A new user must be able to complete onboarding and record their first entry with
 AI feedback must be presented in plain language without linguistic jargon. Grammar corrections must show the original phrasing alongside the corrected version.
 
 #### 3.2.3 Short minimum entry time
-The minimum recording length is 30 seconds. The interface must not discourage short entries — the habit must feel achievable daily.
+The minimum recording length is 30 seconds. The interface must not discourage short entries; the habit must feel achievable daily.
 
 ### 3.3 Reliability
 
@@ -185,7 +199,7 @@ All Dart/Flutter code must follow the official Dart style guide. All Python back
 Core use cases (recording, transcription, feedback) must have unit tests. The learner profile update logic must have integration tests. UI testing is deferred to Phase 2.
 
 #### 3.5.3 Version control
-All code and documentation must be committed to GitHub with meaningful commit messages. Documentation must not be duplicated across files — the DRY principle applies to documentation as well as code.
+All code and documentation must be committed to GitHub with meaningful commit messages. Documentation must not be duplicated across files; the DRY principle applies to documentation as well as code.
 
 ### 3.6 Design Constraints
 
@@ -209,21 +223,21 @@ No purchased components at this stage. The following third-party services are us
 ### 3.9 Interfaces
 
 #### 3.9.1 User Interfaces
-- **Onboarding screens** — language selection, level self-assessment, goal setting
-- **Home / record screen** — primary entry point, prompt display, record button, streak indicator
-- **Feedback screen** — grammar corrections, vocabulary suggestions, register note, fluency score
-- **Entry history screen** — list of past entries with dates and scores
-- **Learner profile screen** — error patterns, vocabulary progress, cumulative stats
-- **Daily vocabulary screen** — vocabulary items drawn from errors and level progression
-- **Settings screen** — target language, notification preferences
+- **Onboarding screens:** language selection, level self-assessment, goal setting
+- **Home / record screen:** primary entry point, prompt display, record button, streak indicator
+- **Feedback screen:** grammar corrections, vocabulary suggestions, register note, fluency score
+- **Entry history screen:** list of past entries with dates and scores
+- **Learner profile screen:** error patterns, vocabulary progress, cumulative stats
+- **Daily vocabulary screen:** vocabulary items drawn from errors and level progression
+- **Settings screen:** target language, notification preferences
 
 #### 3.9.2 Hardware Interfaces
 - Device microphone (required for recording)
 - Local storage (required for SQLite and Whisper model)
 
 #### 3.9.3 Software Interfaces
-- Anthropic Claude API — receives transcript and learner profile summary; returns structured JSON feedback
-- OpenAI Whisper (on-device) — receives audio file; returns text transcript
+- Anthropic Claude API: receives transcript and learner profile summary; returns structured JSON feedback
+- OpenAI Whisper (on-device): receives audio file; returns text transcript
 
 #### 3.9.4 Communication Interfaces
 - HTTPS for all backend communication
@@ -243,9 +257,19 @@ User audio recordings remain exclusively on the user's device and are never tran
 
 ---
 
-## 4. Supporting Information
+## 4. AI Reflection
+
+This section documents the team's experience using AI tools during the inception phase.
+
+AI assistance was used throughout the production of this SRS and the use case diagram. Claude was used to draft content, structure the document, generate and iterate on Mermaid diagram code, and troubleshoot rendering issues across different tools.
+
+The main challenge encountered was working on unfamiliar technical topics with AI assistance. When the subject matter was new, it was difficult to evaluate whether an AI-generated output was accurate, appropriate, or well-suited to the context. Accepting AI suggestions uncritically in these situations carries real risk; errors or unsuitable choices can go undetected. This experience highlighted that effective use of AI as a tool requires at least a baseline familiarity with the domain. The less prior knowledge a user brings, the harder it is to recognise when the AI is wrong or when a technically correct answer is not the right fit for the situation.
+
+---
+
+## 5. Supporting Information
 For further information, visit the [Talk2Me Blog](https://talk2me4.wordpress.com) or contact the team via the repository.
 
 The team:
-- Hope Wilson
-- Rodrigo Chavez
+- Hope
+- Rodrigo

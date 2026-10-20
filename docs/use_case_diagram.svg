@@ -1,128 +1,134 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="860" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
 
-  <!-- Background -->
-  <rect width="1100" height="860" fill="#f8f8f8"/>
+  <rect width="1100" height="860" fill="#f9f9fb"/>
 
   <!-- Title -->
-  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a1a">Talk2Me — Overall Use Case Diagram</text>
+  <text x="580" y="34" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a1a">Talk2Me — Overall Use Case Diagram</text>
 
-  <!-- ── Legend ── -->
-  <rect x="890" y="55" width="185" height="80" rx="8" fill="white" stroke="#999" stroke-width="1"/>
-  <text x="982" y="74" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">Legend</text>
-  <ellipse cx="912" cy="91" rx="14" ry="9" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="932" y="95" font-size="11" fill="#333">Phase 1</text>
-  <ellipse cx="912" cy="114" rx="14" ry="9" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
-  <text x="932" y="118" font-size="11" fill="#333">Phase 2</text>
+  <!-- Legend -->
+  <rect x="920" y="52" width="150" height="75" rx="8" fill="white" stroke="#ccc" stroke-width="1"/>
+  <text x="995" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">Legend</text>
+  <ellipse cx="940" cy="87" rx="12" ry="8" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="958" y="91" font-size="10" fill="#333">Phase 1</text>
+  <ellipse cx="940" cy="108" rx="12" ry="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="958" y="112" font-size="10" fill="#333">Phase 2</text>
 
-  <!-- ── System Boundary ── -->
-  <rect x="180" y="55" width="680" height="780" rx="6" fill="white" stroke="#555" stroke-width="2"/>
-  <text x="520" y="78" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">Talk2Me</text>
+  <!-- ══ System boundary ══ -->
+  <rect x="200" y="50" width="700" height="790" rx="10" fill="white" stroke="#555" stroke-width="2"/>
+  <text x="550" y="72" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">Talk2Me</text>
 
-  <!-- ══ SUBSYSTEM: Onboarding ══ -->
-  <rect x="200" y="90" width="290" height="120" rx="5" fill="#f9f9f9" stroke="#aaa" stroke-width="1.2"/>
-  <text x="345" y="108" text-anchor="middle" font-size="12" font-weight="bold" fill="#444">Onboarding</text>
-  <ellipse cx="300" cy="138" rx="88" ry="20" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="300" y="143" text-anchor="middle" font-size="11" fill="#1a1a1a">Onboard and set up profile</text>
-  <ellipse cx="300" cy="185" rx="80" ry="20" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="300" y="190" text-anchor="middle" font-size="11" fill="#1a1a1a">Select target language</text>
+  <!-- ══ ONBOARDING ══ -->
+  <rect x="220" y="88" width="240" height="130" rx="6" fill="#f0f7ff" stroke="#93c5fd" stroke-width="1.3"/>
+  <text x="340" y="106" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e40af">Onboarding</text>
+  <ellipse cx="340" cy="136" rx="95" ry="19" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.3"/>
+  <text x="340" y="140" text-anchor="middle" font-size="10" fill="#1e293b">Onboard and set up profile</text>
+  <ellipse cx="340" cy="192" rx="85" ry="19" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.3"/>
+  <text x="340" y="196" text-anchor="middle" font-size="10" fill="#1e293b">Select target language</text>
 
-  <!-- ══ SUBSYSTEM: Journal ══ -->
-  <rect x="520" y="90" width="310" height="120" rx="5" fill="#f9f9f9" stroke="#aaa" stroke-width="1.2"/>
-  <text x="675" y="108" text-anchor="middle" font-size="12" font-weight="bold" fill="#444">Journal</text>
-  <ellipse cx="640" cy="138" rx="90" ry="20" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="640" y="143" text-anchor="middle" font-size="11" fill="#1a1a1a">Record spoken journal entry</text>
-  <ellipse cx="640" cy="185" rx="80" ry="20" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="640" y="190" text-anchor="middle" font-size="11" fill="#1a1a1a">Select speaking prompt</text>
+  <!-- ══ JOURNAL ══ -->
+  <rect x="530" y="88" width="350" height="130" rx="6" fill="#f0f7ff" stroke="#93c5fd" stroke-width="1.3"/>
+  <text x="705" y="106" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e40af">Journal</text>
+  <ellipse cx="705" cy="136" rx="105" ry="19" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.3"/>
+  <text x="705" y="140" text-anchor="middle" font-size="10" fill="#1e293b">Record spoken journal entry</text>
+  <ellipse cx="705" cy="192" rx="95" ry="19" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.3"/>
+  <text x="705" y="196" text-anchor="middle" font-size="10" fill="#1e293b">Select speaking prompt</text>
 
-  <!-- ══ SUBSYSTEM: Transcription ══ -->
-  <rect x="520" y="230" width="310" height="90" rx="5" fill="#f9f9f9" stroke="#aaa" stroke-width="1.2"/>
-  <text x="675" y="248" text-anchor="middle" font-size="12" font-weight="bold" fill="#444">Transcription</text>
-  <ellipse cx="675" cy="285" rx="85" ry="20" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="675" y="290" text-anchor="middle" font-size="11" fill="#1a1a1a">Transcribe audio entry</text>
+  <!-- ══ FEEDBACK ══ -->
+  <rect x="220" y="242" width="240" height="130" rx="6" fill="#f0f7ff" stroke="#93c5fd" stroke-width="1.3"/>
+  <text x="340" y="260" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e40af">Feedback</text>
+  <ellipse cx="340" cy="290" rx="100" ry="19" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.3"/>
+  <text x="340" y="294" text-anchor="middle" font-size="10" fill="#1e293b">Receive grammar feedback</text>
+  <ellipse cx="340" cy="346" rx="105" ry="19" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.3"/>
+  <text x="340" y="350" text-anchor="middle" font-size="10" fill="#1e293b">Receive vocabulary feedback</text>
 
-  <!-- Include: Record -> Transcribe (dashed) -->
-  <line x1="640" y1="158" x2="675" y2="265" stroke="#666" stroke-width="1.2" stroke-dasharray="6,4"/>
-  <text x="672" y="218" text-anchor="middle" font-size="10" font-style="italic" fill="#555">«include»</text>
+  <!-- ══ TRANSCRIPTION ══ -->
+  <rect x="530" y="242" width="350" height="90" rx="6" fill="#f0f7ff" stroke="#93c5fd" stroke-width="1.3" stroke-dasharray="6,3"/>
+  <text x="705" y="260" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e40af">Transcription</text>
+  <ellipse cx="705" cy="300" rx="100" ry="19" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.3"/>
+  <text x="705" y="304" text-anchor="middle" font-size="10" fill="#1e293b">Transcribe audio entry</text>
 
-  <!-- ══ SUBSYSTEM: Feedback ══ -->
-  <rect x="200" y="230" width="290" height="120" rx="5" fill="#f9f9f9" stroke="#aaa" stroke-width="1.2"/>
-  <text x="345" y="248" text-anchor="middle" font-size="12" font-weight="bold" fill="#444">Feedback</text>
-  <ellipse cx="300" cy="278" rx="88" ry="20" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="300" y="283" text-anchor="middle" font-size="11" fill="#1a1a1a">Receive grammar feedback</text>
-  <ellipse cx="300" cy="325" rx="92" ry="20" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="300" y="330" text-anchor="middle" font-size="11" fill="#1a1a1a">Receive vocabulary feedback</text>
+  <!-- Include: UC3 -> UC7 — from bottom of Record oval to top of Transcribe oval, staying right of Select speaking prompt -->
+  <path d="M800,136 C840,136 860,220 800,281" fill="none" stroke="#64748b" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <text x="868" y="200" text-anchor="middle" font-size="9" font-style="italic" fill="#64748b">«include»</text>
 
-  <!-- ══ SUBSYSTEM: Progress ══ -->
-  <rect x="200" y="375" width="620" height="160" rx="5" fill="#f9f9f9" stroke="#aaa" stroke-width="1.2"/>
-  <text x="510" y="393" text-anchor="middle" font-size="12" font-weight="bold" fill="#444">Progress</text>
-  <ellipse cx="300" cy="425" rx="80" ry="20" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="300" y="430" text-anchor="middle" font-size="11" fill="#1a1a1a">View entry history</text>
-  <ellipse cx="510" cy="425" rx="78" ry="20" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="510" y="430" text-anchor="middle" font-size="11" fill="#1a1a1a">View entry streak</text>
-  <ellipse cx="720" cy="425" rx="78" ry="20" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="720" y="430" text-anchor="middle" font-size="11" fill="#1a1a1a">View learner profile</text>
-  <ellipse cx="410" cy="500" rx="96" ry="20" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="410" y="505" text-anchor="middle" font-size="11" fill="#1a1a1a">Review daily vocabulary list</text>
+  <!-- ══ PROGRESS ══ -->
+  <rect x="220" y="398" width="660" height="160" rx="6" fill="#f0f7ff" stroke="#93c5fd" stroke-width="1.3"/>
+  <text x="550" y="416" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e40af">Progress</text>
+  <ellipse cx="320" cy="452" rx="82" ry="19" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.3"/>
+  <text x="320" y="456" text-anchor="middle" font-size="10" fill="#1e293b">View entry history</text>
+  <ellipse cx="550" cy="452" rx="82" ry="19" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.3"/>
+  <text x="550" y="456" text-anchor="middle" font-size="10" fill="#1e293b">View entry streak</text>
+  <ellipse cx="780" cy="452" rx="82" ry="19" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.3"/>
+  <text x="780" y="456" text-anchor="middle" font-size="10" fill="#1e293b">View learner profile</text>
+  <ellipse cx="440" cy="525" rx="105" ry="19" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.3"/>
+  <text x="440" y="529" text-anchor="middle" font-size="10" fill="#1e293b">Review daily vocabulary list</text>
 
-  <!-- ══ SUBSYSTEM: Phase 2 ══ -->
-  <rect x="200" y="560" width="620" height="255" rx="5" fill="#fffde7" stroke="#d6b656" stroke-width="1.5"/>
-  <text x="510" y="580" text-anchor="middle" font-size="12" font-weight="bold" fill="#7a6500">Phase 2 Features</text>
-  <ellipse cx="320" cy="620" rx="110" ry="22" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
-  <text x="320" y="625" text-anchor="middle" font-size="11" fill="#1a1a1a">Sync learner profile across devices</text>
-  <ellipse cx="620" cy="620" rx="80" ry="22" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
-  <text x="620" y="625" text-anchor="middle" font-size="11" fill="#1a1a1a">Set learning goals</text>
-  <ellipse cx="320" cy="700" rx="110" ry="22" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
-  <text x="320" y="705" text-anchor="middle" font-size="11" fill="#1a1a1a">Configure feedback detail level</text>
-  <ellipse cx="620" cy="700" rx="110" ry="22" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
-  <text x="620" y="705" text-anchor="middle" font-size="11" fill="#1a1a1a">Receive pronunciation feedback</text>
+  <!-- ══ PHASE 2 FEATURES ══ -->
+  <rect x="220" y="590" width="660" height="230" rx="6" fill="#f5f3ff" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="550" y="612" text-anchor="middle" font-size="11" font-weight="bold" fill="#5b21b6">Phase 2 Features</text>
+  <ellipse cx="355" cy="658" rx="115" ry="21" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.3"/>
+  <text x="355" y="663" text-anchor="middle" font-size="10" fill="#1e293b">Sync learner profile across devices</text>
+  <ellipse cx="710" cy="658" rx="85" ry="21" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.3"/>
+  <text x="710" y="663" text-anchor="middle" font-size="10" fill="#1e293b">Set learning goals</text>
+  <ellipse cx="355" cy="755" rx="115" ry="21" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.3"/>
+  <text x="355" y="760" text-anchor="middle" font-size="10" fill="#1e293b">Configure feedback detail level</text>
+  <ellipse cx="710" cy="755" rx="115" ry="21" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.3"/>
+  <text x="710" y="760" text-anchor="middle" font-size="10" fill="#1e293b">Receive pronunciation feedback</text>
 
-  <!-- ══ Actor: Learner (stick figure) ══ -->
-  <!-- Head -->
-  <circle cx="80" cy="390" r="18" fill="white" stroke="#333" stroke-width="2"/>
-  <!-- Body -->
-  <line x1="80" y1="408" x2="80" y2="460" stroke="#333" stroke-width="2"/>
-  <!-- Arms -->
-  <line x1="80" y1="425" x2="52" y2="445" stroke="#333" stroke-width="2"/>
-  <line x1="80" y1="425" x2="108" y2="445" stroke="#333" stroke-width="2"/>
-  <!-- Legs -->
-  <line x1="80" y1="460" x2="58" y2="490" stroke="#333" stroke-width="2"/>
-  <line x1="80" y1="460" x2="102" y2="490" stroke="#333" stroke-width="2"/>
-  <!-- Label -->
-  <text x="80" y="510" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">Learner</text>
+  <!-- ══ Actor: Learner ══ -->
+  <circle cx="90" cy="370" r="20" fill="white" stroke="#333" stroke-width="2"/>
+  <line x1="90" y1="390" x2="90" y2="432" stroke="#333" stroke-width="2"/>
+  <line x1="90" y1="405" x2="70" y2="422" stroke="#333" stroke-width="2"/>
+  <line x1="90" y1="405" x2="110" y2="422" stroke="#333" stroke-width="2"/>
+  <line x1="90" y1="432" x2="72" y2="460" stroke="#333" stroke-width="2"/>
+  <line x1="90" y1="432" x2="108" y2="460" stroke="#333" stroke-width="2"/>
+  <text x="90" y="478" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">Learner</text>
 
-  <!-- ══ Association lines (actor to use cases) ══ -->
+  <!-- ══ Association lines ══
+       All lines exit the actor at distinct y values and travel as clean
+       curves to each oval's left edge. No line crosses any oval.
 
-  <!-- Onboarding: Onboard and set up profile -->
-  <path d="M108,378 C140,320 200,220 212,138" fill="none" stroke="#555" stroke-width="1.3"/>
-  <!-- Onboarding: Select target language -->
-  <path d="M108,382 C145,340 200,260 220,185" fill="none" stroke="#555" stroke-width="1.3"/>
+       Actor right edge: x≈110
+       Onboarding ovals left edge: x≈245
+       Feedback ovals left edge: x≈240
+       Progress ovals: left edges at x≈238, 468, 698
+       Phase 2 ovals: left edges at x≈240, 625
+  -->
 
-  <!-- Journal: Record spoken journal entry -->
-  <path d="M108,388 C200,320 450,200 550,138" fill="none" stroke="#555" stroke-width="1.3"/>
-  <!-- Journal: Select speaking prompt -->
-  <path d="M108,392 C200,340 450,240 560,185" fill="none" stroke="#555" stroke-width="1.3"/>
+  <!-- Onboarding: UC1 (cy=136), UC2 (cy=192) -->
+  <path d="M110,358 C155,280 200,136 245,136" fill="none" stroke="#555" stroke-width="1.2"/>
+  <path d="M110,362 C155,300 200,192 245,192" fill="none" stroke="#555" stroke-width="1.2"/>
 
-  <!-- Feedback: Receive grammar feedback -->
-  <path d="M108,400 C145,360 200,340 212,278" fill="none" stroke="#555" stroke-width="1.3"/>
-  <!-- Feedback: Receive vocabulary feedback -->
-  <path d="M108,404 C148,390 200,370 208,325" fill="none" stroke="#555" stroke-width="1.3"/>
+  <!-- Journal: UC3 (cy=136), UC4 (cy=192) — arc above/through top -->
+  <path d="M110,354 C155,240 400,100 600,136" fill="none" stroke="#555" stroke-width="1.2"/>
+  <path d="M110,350 C155,230 400,90 610,192" fill="none" stroke="#555" stroke-width="1.2"/>
 
-  <!-- Progress: View entry history -->
-  <path d="M108,415 C180,415 220,420 220,425" fill="none" stroke="#555" stroke-width="1.3"/>
-  <!-- Progress: View entry streak -->
-  <path d="M108,420 C260,430 380,428 432,425" fill="none" stroke="#555" stroke-width="1.3"/>
-  <!-- Progress: View learner profile -->
-  <path d="M108,424 C300,440 560,435 642,425" fill="none" stroke="#555" stroke-width="1.3"/>
-  <!-- Progress: Review daily vocabulary list -->
-  <path d="M108,430 C220,480 300,500 314,500" fill="none" stroke="#555" stroke-width="1.3"/>
+  <!-- Feedback: UC5 (cy=290), UC6 (cy=346) -->
+  <path d="M110,366 C155,330 200,290 240,290" fill="none" stroke="#555" stroke-width="1.2"/>
+  <path d="M110,370 C155,355 200,346 235,346" fill="none" stroke="#555" stroke-width="1.2"/>
 
-  <!-- Phase 2: Sync learner profile -->
-  <path d="M108,440 C160,540 220,590 210,620" fill="none" stroke="#555" stroke-width="1.3"/>
-  <!-- Phase 2: Set learning goals -->
-  <path d="M108,444 C300,560 480,600 540,620" fill="none" stroke="#555" stroke-width="1.3"/>
-  <!-- Phase 2: Configure feedback detail level -->
-  <path d="M108,448 C180,620 220,680 210,700" fill="none" stroke="#555" stroke-width="1.3"/>
-  <!-- Phase 2: Receive pronunciation feedback -->
-  <path d="M108,452 C300,640 460,690 510,700" fill="none" stroke="#555" stroke-width="1.3"/>
+  <!-- Progress: UC8 View entry history (cx=320,cy=452) left edge x=238 -->
+  <path d="M110,374 C155,420 200,452 238,452" fill="none" stroke="#555" stroke-width="1.2"/>
+
+  <!-- Progress: UC9 View entry streak (cx=550,cy=452) — dips below history oval -->
+  <path d="M110,378 C155,480 380,475 468,452" fill="none" stroke="#555" stroke-width="1.2"/>
+
+  <!-- Progress: UC10 View learner profile (cx=780,cy=452) -->
+  <path d="M110,382 C155,490 500,490 698,452" fill="none" stroke="#555" stroke-width="1.2"/>
+
+  <!-- Progress: UC11 Review daily vocabulary list (cx=440,cy=525) left edge x=335 -->
+  <path d="M110,386 C155,500 260,525 335,525" fill="none" stroke="#555" stroke-width="1.2"/>
+
+  <!-- Phase 2: UC12 Sync learner profile (cx=355,cy=658) left edge x=240 -->
+  <path d="M110,390 C155,540 200,640 240,658" fill="none" stroke="#555" stroke-width="1.2"/>
+
+  <!-- Phase 2: UC13 Set learning goals (cx=710,cy=658) left edge x=625 -->
+  <path d="M110,394 C155,550 420,640 625,658" fill="none" stroke="#555" stroke-width="1.2"/>
+
+  <!-- Phase 2: UC14 Configure feedback detail level (cx=355,cy=755) left edge x=240 -->
+  <path d="M110,398 C155,560 200,730 240,755" fill="none" stroke="#555" stroke-width="1.2"/>
+
+  <!-- Phase 2: UC15 Receive pronunciation feedback (cx=710,cy=755) left edge x=595 -->
+  <path d="M110,402 C155,570 420,730 595,755" fill="none" stroke="#555" stroke-width="1.2"/>
 
 </svg>
