@@ -1,6 +1,6 @@
 ---
 config:
-  theme: base
+  theme: redux-color
   flowchart:
     subGraphTitleMargin:
       top: 20
@@ -8,54 +8,51 @@ config:
   layout: elk
   look: classic
 ---
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#dbeafe', 'primaryBorderColor': '#3b82f6', 'primaryTextColor': '#1e293b', 'lineColor': '#555', 'fontSize': '13px'}}}%%
 flowchart LR
-    classDef phase1 fill:#dbeafe,stroke:#3b82f6,color:#1e293b
+    classDef december fill:#dbeafe,stroke:#3b82f6,color:#1e293b
+    classDef phase1later fill:#e2e8f0,stroke:#94a3b8,color:#475569
     classDef phase2 fill:#ede9fe,stroke:#7c3aed,color:#1e293b
-
-    subgraph OB["Onboarding"]
+ subgraph OB["Onboarding"]
         UC1(["Onboard and set up profile"])
         UC2(["Select target language"])
-    end
-    subgraph JO["Journal"]
-        UC3(["Record spoken journal entry"])
+  end
+ subgraph JO["Journal"]
         UC4(["Select speaking prompt"])
-    end
-    subgraph FB["Feedback"]
+        UC3(["Record spoken journal entry"])
+  end
+ subgraph FB["Feedback"]
         UC5(["Receive grammar feedback"])
         UC6(["Receive vocabulary feedback"])
-    end
-    subgraph TR["Transcription"]
+  end
+ subgraph TR["Transcription"]
         UC7(["Transcribe audio entry"])
-    end
-    subgraph PR["Progress"]
+  end
+ subgraph PR["Progress"]
         UC8(["View entry history"])
         UC9(["View entry streak"])
         UC10(["View learner profile"])
         UC11(["Review daily vocabulary list"])
-    end
-    subgraph P1["Phase 1 Features"]
+  end
+ subgraph P1["Phase 1 Features (Blue Nodes = December Delivery, Grey Nodes = Later)"]
         OB
         JO
         FB
         TR
         PR
-    end
-    subgraph P2["Phase 2 Features"]
+  end
+ subgraph P2["Phase 2 Features"]
         UC12(["Sync learner profile across devices"])
         UC13(["Set learning goals"])
         UC14(["Configure feedback detail level"])
         UC15(["Receive pronunciation feedback"])
-    end
-    subgraph TM["Talk2Me Use Case Diagram"]
+  end
+ subgraph TM["Talk2Me Use Case Diagram"]
         P1
         P2
-    end
-
+  end
     Learner(["fa:fa-user Learner"]) --- UC1 & UC2 & UC3 & UC4 & UC5 & UC6 & UC8 & UC9 & UC10 & UC11 & UC12 & UC13 & UC14 & UC15
     UC3 -. «include» .-> UC7
 
-    P1 ~~~ P2
-
-    class UC1,UC2,UC3,UC4,UC5,UC6,UC7,UC8,UC9,UC10,UC11 phase1
+    class UC1,UC3,UC5,UC6,UC7 december
+    class UC2,UC4,UC8,UC9,UC10,UC11 phase1later
     class UC12,UC13,UC14,UC15 phase2

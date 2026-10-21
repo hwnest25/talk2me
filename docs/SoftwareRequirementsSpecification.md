@@ -34,8 +34,6 @@
     - [Legal, Copyright and Other Notices](#311-legal-copyright-and-other-notices)
     - [Applicable Standards](#312-applicable-standards)
 - [Supporting Information](#4-supporting-information)
-- [AI Reflection](#4-ai-reflection)
-- [Supporting Information](#5-supporting-information)
 
 ---
 
@@ -257,17 +255,7 @@ User audio recordings remain exclusively on the user's device and are never tran
 
 ---
 
-## 4. AI Reflection
-
-This section documents the team's experience using AI tools during the inception phase.
-
-AI assistance was used throughout the production of this SRS and the use case diagram. Claude was used to draft content, structure the document, generate and iterate on Mermaid diagram code, and troubleshoot rendering issues across different tools.
-
-The main challenge encountered was working on unfamiliar technical topics with AI assistance. When the subject matter was new, it was difficult to evaluate whether an AI-generated output was accurate, appropriate, or well-suited to the context. Accepting AI suggestions uncritically in these situations carries real risk; errors or unsuitable choices can go undetected. This experience highlighted that effective use of AI as a tool requires at least a baseline familiarity with the domain. The less prior knowledge a user brings, the harder it is to recognise when the AI is wrong or when a technically correct answer is not the right fit for the situation.
-
----
-
-## 5. Supporting Information
+## 4. Supporting Information
 For further information, visit the [Talk2Me Blog](https://talk2me4.wordpress.com) or contact the team via the repository.
 
 The team:
