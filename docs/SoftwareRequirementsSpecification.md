@@ -221,7 +221,7 @@ No purchased components at this stage. The following third-party services are us
 ### 3.9 Interfaces
 
 #### 3.9.1 User Interfaces
-- **Onboarding screens:** language selection, level self-assessment, goal setting
+- **Onboarding screens:** language selection, level self-assessment, goal setting, privacy notice informing the learner that transcripts are transmitted for feedback but never stored, and advising them not to include sensitive personal information in their entries
 - **Home / record screen:** primary entry point, prompt display, record button, streak indicator
 - **Feedback screen:** grammar corrections, vocabulary suggestions, register note, fluency score
 - **Entry history screen:** list of past entries with dates and scores
@@ -245,7 +245,11 @@ No purchased components at this stage. The following third-party services are us
 tbd
 
 ### 3.11 Legal, Copyright and Other Notices
-User audio recordings remain exclusively on the user's device and are never transmitted or stored externally. Learner profile data transmitted to the backend for AI processing is ephemeral and not logged or retained server-side. Full data deletion must be available to the user at any time in compliance with GDPR.
+User audio recordings remain exclusively on the user's device and are never transmitted or stored externally. The text transcript is transmitted to the backend solely for AI feedback processing; it is not logged, stored, or retained server-side and is discarded immediately after the feedback response is returned.
+
+Talk2Me operates a shared responsibility model for transcript privacy. The app is responsible for ensuring transcripts are transmitted securely, processed ephemerally, and never retained. The learner is responsible for not including sensitive personal information in their spoken entries. This expectation is surfaced during onboarding.
+
+Full data deletion must be available to the user at any time in compliance with GDPR.
 
 ### 3.12 Applicable Standards
 - Dart style guide (Flutter development)
