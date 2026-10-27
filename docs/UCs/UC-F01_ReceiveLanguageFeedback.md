@@ -1,13 +1,17 @@
 # Talk2Me — Use-Case Specification
 
 **UC-F01: Receive language feedback**  
-Version 0.1 — draft for team review
+Version 0.3 — draft for team review
+
+**CRUD: Create (C) — new feedback; Read (R) — saved feedback.**
 
 ## Revision History
 
 | Date | Version | Description | Prepared by |
 | --- | --- | --- | --- |
-| 2026-10-26 | 0.1 | Initial specification and visuals; not committed to Git | ChatGPT, for Team Talk2Me |
+| 2026-10-26 | 0.1 | Initial specification and visuals; subsequently uploaded by the team | ChatGPT, for Team Talk2Me |
+| 2026-10-27 | 0.2 | Verified RUP outline; expanded explicit CRUD labels; linked onboarding prerequisite | ChatGPT, for Team Talk2Me |
+| 2026-10-27 | 0.3 | Rechecked teacher examples; added User/UI/System swimlanes, Save labels and visible RUP identification; corrected feedback CRUD classification | ChatGPT, for Team Talk2Me |
 
 ## 1. Use-Case Name
 
@@ -15,14 +19,15 @@ Version 0.1 — draft for team review
 
 | Field | Definition |
 | --- | --- |
+| Documentation standard | **RUP Use-Case Specification:** sections 1–6; brief description deferred as permitted by the teacher |
 | Identifier | UC-F01 |
 | Primary actor | Learner who has completed local onboarding |
 | Supporting actor | External AI feedback service (Anthropic Claude) |
 | Goal | Obtain understandable grammar and vocabulary feedback for one journal entry |
 | Trigger | The learner chooses **Get feedback** for an entry |
 | Scope | Talk2Me app and backend; December delivery |
-| CRUD | **Not a simple CRUD use case.** It requests analysis and presents suggestions. A1 retrieves an existing result (**Read / R**); storing a new result is a supporting data operation. |
-| SRS traceability | [SRS 3.1.4 and 3.1.5](https://github.com/hwnest25/talk2me/blob/4d7918c4c9cb7bd1a3835e42831891c7c35e274f/docs/SoftwareRequirementsSpecification.md#31-functionality) |
+| CRUD classification | **Create (C) — Feedback record** in the main flow; **Read (R)** when an existing result is opened in A1. **Update (U)** of the learner profile is a supporting operation. **Delete (D)** is outside scope. |
+| SRS traceability | [SRS 3.1.4 and 3.1.5](https://github.com/hwnest25/talk2me/blob/04941a6c6d483d5e880726dcab42ce00f5e72737/docs/SoftwareRequirementsSpecification.md#31-functionality) |
 
 Grammar and vocabulary are two parts of the same feedback result, not two unrelated user goals. This draft groups them in one specification while retaining their separate SRS references. A future SRS/diagram alignment is recorded in [the review](../../REVIEW.md). Pronunciation assessment, history browsing, and changing feedback settings are outside this goal.
 
@@ -45,13 +50,41 @@ Deferred until the `.feature` work, as permitted by the assignment.
 
 The explicit request and joint grammar/vocabulary result are draft design decisions; see [review assumptions A2–A3](../../REVIEW.md#design-decisions-and-assumptions).
 
+
+#### CRUD operations in this use case
+
+| Operation | Role in this goal | Where it occurs |
+| --- | --- | --- |
+| **Create (C)** | Primary operation: generate and save a new feedback record for one entry | Basic flow, steps 4–6 |
+| **Read (R)** | Supporting operation: read the transcript/profile and display feedback; A1 reuses a saved result | Basic flow, steps 2 and 7; alternative A1 |
+| **Update (U)** | Supporting operation: record returned learning patterns and feedback availability once | Basic flow, step 6 |
+| **Delete (D)** | Not performed | Removing feedback, entries, or the profile is outside scope |
+
+The main flow is **Create (C)** because it generates and saves a new feedback record. AI analysis is the processing needed to produce that record. Alternative A1 is **Read (R)**: it opens saved feedback without generating a new result or updating the profile again.
+
 #### 2.1.1 Activity Diagram
 
 ![UML activity diagram for receiving language feedback](assets/UC-F01_activity.png)
 
 [Editable SVG](assets/UC-F01_activity.svg)
 
-The diagram includes existing feedback, offline use, response failures, and local-save recovery. Further alternatives are described below.
+The diagram shows new feedback creation, reading a saved result, offline use, response failures and local-save failures. Retry and leaving-screen behaviour are described below. Empty suggestion lists are valid responses.
+
+
+
+**Responsibility swimlanes:**
+
+| Lane | Responsibility |
+| --- | --- |
+| **User** | Request and read feedback |
+| **UI** | Show pending/offline/error states and feedback results |
+| **System / backend** | Read local data; request server/AI analysis; validate and save the result locally |
+
+These follow the teacher's User/System/UI partitioning. “System / backend” means the logic and data layer; it does not imply that all processing runs on a remote server. The diagram labels processing location where it matters.
+
+**RUP** is named in the diagram heading. UML activity notation supplies the swimlanes, actions, decisions and initial/final nodes. **Save** labels identify persistence transitions; they do not add a separate Save button where the written flow saves automatically.
+
+[Editable draw.io diagrams — UC-F01 page](assets/Talk2Me_Activity_Diagrams.drawio)
 
 #### 2.1.2 Mockup
 
@@ -101,7 +134,7 @@ After submission, the learner can return to the journal. If the request complete
 
 ## 4. Preconditions
 
-1. The learner has completed local onboarding and has a local profile.
+1. The learner has completed [UC-O01: Set up a learner profile](UC-O01_SetUpLearnerProfile.md) and has a local profile.
 2. A locally saved entry with a non-empty transcript exists. A2 covers a stale or invalid entry state.
 3. Onboarding has explained that text and a compact profile summary are sent for feedback and that audio stays local.
 

@@ -1,0 +1,648 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram id="UC-O01" name="UC-O01 activity">
+    <mxGraphModel dx="1560" dy="2010" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1560" pageHeight="2010">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Set up a learner profile — Create (C)&#10;RUP · UML activity diagram · User / UI / System responsibilities · Initial profile creation" style="text;html=0;align=left;verticalAlign=middle;fontSize=24;fontColor=#17313E;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="35" width="1440" height="80" />
+        </mxCell>
+        <mxCell id="lane0" value="User&#10;Learner actions" style="swimlane;horizontal=1;startSize=82;html=0;rounded=0;collapsible=0;fontSize=19;fillColor=#FFFFFF;swimlaneFillColor=#F2F6FC;strokeColor=#B9CBD4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="140" width="480" height="1680" />
+        </mxCell>
+        <mxCell id="lane1" value="UI&#10;Screens, status and messages" style="swimlane;horizontal=1;startSize=82;html=0;rounded=0;collapsible=0;fontSize=19;fillColor=#FFFFFF;swimlaneFillColor=#F1F8F7;strokeColor=#B9CBD4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="140" width="480" height="1680" />
+        </mxCell>
+        <mxCell id="lane2" value="System / backend&#10;On-device logic and storage" style="swimlane;horizontal=1;startSize=82;html=0;rounded=0;collapsible=0;fontSize=19;fillColor=#FFFFFF;swimlaneFillColor=#F5F5FA;strokeColor=#B9CBD4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1020" y="140" width="480" height="1680" />
+        </mxCell>
+        <mxCell id="start" value="" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;ellipse;fillColor=#17313E;strokeColor=#17313E;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="230.0" y="115.0" width="20" height="20" />
+        </mxCell>
+        <mxCell id="open" value="Open Talk2Me" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="65.0" y="172.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="form" value="Show profile form" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="172.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="form_merge" value="" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rhombus;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="227.0" y="277.0" width="26" height="26" />
+        </mxCell>
+        <mxCell id="input" value="Choose language and level;&#10;select Continue" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="65.0" y="342.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="validate" value="Validate profile choices" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="65.0" y="342.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="valid" value="Valid&#10;choices?" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rhombus;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="130.0" y="452.0" width="220" height="96" />
+        </mxCell>
+        <mxCell id="invalid" value="Show field error;&#10;keep other choices" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="462.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="notice" value="Show privacy notice" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="602.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="read_notice" value="Read privacy notice" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="65.0" y="722.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="choice" value="Learner&#10;choice?" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rhombus;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="130.0" y="832.0" width="220" height="96" />
+        </mxCell>
+        <mxCell id="save_merge" value="" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rhombus;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="227.0" y="967.0" width="26" height="26" />
+        </mxCell>
+        <mxCell id="save" value="Save initial profile (C);&#10;mark onboarding complete" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="65.0" y="1042.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="saved" value="Save&#10;succeeded?" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rhombus;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="130.0" y="1152.0" width="220" height="96" />
+        </mxCell>
+        <mxCell id="save_error" value="Show Profile not saved;&#10;keep choices for retry" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="1162.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="ready" value="Show profile ready;&#10;open journal" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="1312.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="done" value="Profile ready" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;shape=doubleEllipse;fillColor=#17313E;strokeColor=#17313E;fontSize=14;labelPosition=right;align=left;verticalLabelPosition=middle;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="225.0" y="1425.0" width="30" height="30" />
+        </mxCell>
+        <mxCell id="failure_choice" value="Choose Try again or leave" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="65.0" y="1312.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="retry" value="Learner&#10;choice?" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rhombus;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="130.0" y="1422.0" width="220" height="96" />
+        </mxCell>
+        <mxCell id="exit" value="Setup incomplete" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;shape=doubleEllipse;fillColor=#17313E;strokeColor=#17313E;fontSize=14;labelPosition=right;align=left;verticalLabelPosition=middle;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="225.0" y="1595.0" width="30" height="30" />
+        </mxCell>
+        <mxCell id="edge0" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="start" target="open">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge1" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="open" target="form">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge2" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=1;entryY=0.5;" edge="1" parent="1" source="form" target="form_merge">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <Array as="points">
+              <mxPoint x="780" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge3" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="form_merge" target="input">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge4" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="input" target="validate">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge5" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="validate" target="valid">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge6" value="[no] A1" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="valid" target="invalid">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="-23.1640625" y="-24.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge7" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="invalid" target="form_merge">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <Array as="points">
+              <mxPoint x="100" y="640" />
+              <mxPoint x="100" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge8" value="[yes]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="valid" target="notice">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="280.078125" y="-12.0" />
+            <Array as="points">
+              <mxPoint x="1260" y="715.0" />
+              <mxPoint x="780" y="715.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge9" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="notice" target="read_notice">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <Array as="points">
+              <mxPoint x="780" y="840.0" />
+              <mxPoint x="300" y="840.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge10" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="read_notice" target="choice">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge11" value="[Back] A3" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;entryX=0.5;entryY=0;" edge="1" parent="1" source="choice" target="form_merge">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="50.796875" y="348.5" />
+            <Array as="points">
+              <mxPoint x="80" y="1020" />
+              <mxPoint x="80" y="395" />
+              <mxPoint x="300" y="395" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge12" value="[Finish setup]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="choice" target="save_merge">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="-226.03125" y="-23.5" />
+            <Array as="points">
+              <mxPoint x="300" y="1087.5" />
+              <mxPoint x="1260" y="1087.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge13" value="Save profile" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="save_merge" target="save">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="67.46875" y="6.5" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge14" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="save" target="saved">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge15" value="[no] A5" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="saved" target="save_error">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="-23.1640625" y="-24.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge16" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="save_error" target="failure_choice">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <Array as="points">
+              <mxPoint x="780" y="1415.0" />
+              <mxPoint x="300" y="1415.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge17" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="failure_choice" target="retry">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge18" value="[Try again]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="retry" target="save_merge">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="-150.7734375" y="-24.0" />
+            <Array as="points">
+              <mxPoint x="1460" y="1610" />
+              <mxPoint x="1460" y="1120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge19" value="[leave]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="retry" target="exit">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="47.9609375" y="-5.5" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge20" value="[yes]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=1;entryY=0.5;" edge="1" parent="1" source="saved" target="ready">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="141.578125" y="-66.0" />
+            <Array as="points">
+              <mxPoint x="1260" y="1490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge21" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="ready" target="done">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="note0" value="This path starts without a completed profile. Returning learners reuse their saved profile in alternative A6 (Read)." style="text;html=0;align=left;fontSize=15;fontColor=#536B78;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1857" width="1440" height="30" />
+        </mxCell>
+        <mxCell id="note1" value="Not sure is a valid level choice. Cancellation/interruption and offline behaviour are detailed in §2.2." style="text;html=0;align=left;fontSize=15;fontColor=#536B78;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1887" width="1440" height="30" />
+        </mxCell>
+        <mxCell id="note2" value="All processing and storage shown here stay on the device; no login or AI request is performed." style="text;html=0;align=left;fontSize=15;fontColor=#536B78;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1917" width="1440" height="30" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="UC-J01" name="UC-J01 activity">
+    <mxGraphModel dx="1560" dy="2480" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1560" pageHeight="2480">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Record a spoken journal entry — Create (C)&#10;RUP · UML activity diagram · User / UI / System responsibilities · One recording and transcript" style="text;html=0;align=left;verticalAlign=middle;fontSize=24;fontColor=#17313E;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="35" width="1440" height="80" />
+        </mxCell>
+        <mxCell id="lane0" value="User&#10;Learner actions" style="swimlane;horizontal=1;startSize=82;html=0;rounded=0;collapsible=0;fontSize=19;fillColor=#FFFFFF;swimlaneFillColor=#F2F6FC;strokeColor=#B9CBD4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="140" width="480" height="2150" />
+        </mxCell>
+        <mxCell id="lane1" value="UI&#10;Screens, status and messages" style="swimlane;horizontal=1;startSize=82;html=0;rounded=0;collapsible=0;fontSize=19;fillColor=#FFFFFF;swimlaneFillColor=#F1F8F7;strokeColor=#B9CBD4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="140" width="480" height="2150" />
+        </mxCell>
+        <mxCell id="lane2" value="System / backend&#10;On-device logic and storage" style="swimlane;horizontal=1;startSize=82;html=0;rounded=0;collapsible=0;fontSize=19;fillColor=#FFFFFF;swimlaneFillColor=#F5F5FA;strokeColor=#B9CBD4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1020" y="140" width="480" height="2150" />
+        </mxCell>
+        <mxCell id="start" value="" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;ellipse;fillColor=#17313E;strokeColor=#17313E;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="230.0" y="115.0" width="20" height="20" />
+        </mxCell>
+        <mxCell id="record" value="Choose Record" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="65.0" y="172.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="check" value="Check microphone, model&#10;and storage availability" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="65.0" y="172.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="ready" value="Ready to&#10;record?" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rhombus;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="130.0" y="292.0" width="220" height="96" />
+        </mxCell>
+        <mxCell id="blocked" value="Explain why recording&#10;cannot start (A1)" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="302.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="end_blocked" value="Not started" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;shape=doubleEllipse;fillColor=#17313E;strokeColor=#17313E;fontSize=14;labelPosition=right;align=left;verticalLabelPosition=middle;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="225.0" y="420.0" width="30" height="30" />
+        </mxCell>
+        <mxCell id="capture" value="Start local audio capture" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="65.0" y="472.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="recording_ui" value="Show recording state&#10;and elapsed time" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="472.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="speak" value="Speak; choose Stop and save&#10;after at least 30 seconds" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="65.0" y="612.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="stop" value="Stop capture;&#10;retain local audio" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="65.0" y="612.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="save_audio" value="Save new entry with audio (C);&#10;mark transcription pending" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="65.0" y="752.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="audio_saved" value="Audio&#10;saved?" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rhombus;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="130.0" y="862.0" width="220" height="96" />
+        </mxCell>
+        <mxCell id="audio_error" value="Show save error; offer&#10;local-save retry (A5)" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="872.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="end_audio_error" value="Not completed" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;shape=doubleEllipse;fillColor=#17313E;strokeColor=#17313E;fontSize=14;labelPosition=right;align=left;verticalLabelPosition=middle;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="225.0" y="990.0" width="30" height="30" />
+        </mxCell>
+        <mxCell id="processing_ui" value="Show Transcribing" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="1082.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="transcribe" value="Transcribe audio on device&#10;(included behaviour)" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="65.0" y="1172.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="text_valid" value="Non-empty&#10;transcript?" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rhombus;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="130.0" y="1282.0" width="220" height="96" />
+        </mxCell>
+        <mxCell id="text_error" value="Show transcription failure;&#10;offer retry or leave (A6)" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="1292.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="end_text_error" value="Transcript pending" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;shape=doubleEllipse;fillColor=#17313E;strokeColor=#17313E;fontSize=14;labelPosition=right;align=left;verticalLabelPosition=middle;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="225.0" y="1410.0" width="30" height="30" />
+        </mxCell>
+        <mxCell id="save_text" value="Save transcript on same entry;&#10;mark complete (U)" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="65.0" y="1462.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="text_saved" value="Transcript&#10;saved?" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rhombus;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="130.0" y="1572.0" width="220" height="96" />
+        </mxCell>
+        <mxCell id="save_text_error" value="Show save error; offer&#10;local-save retry (A5)" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="1582.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="end_save_text_error" value="Not completed" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;shape=doubleEllipse;fillColor=#17313E;strokeColor=#17313E;fontSize=14;labelPosition=right;align=left;verticalLabelPosition=middle;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="225.0" y="1700.0" width="30" height="30" />
+        </mxCell>
+        <mxCell id="show_entry" value="Show saved transcript&#10;and audio playback (R)" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="1812.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="review_entry" value="Review the saved entry" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="65.0" y="1952.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="done" value="Entry ready" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;shape=doubleEllipse;fillColor=#17313E;strokeColor=#17313E;fontSize=14;labelPosition=right;align=left;verticalLabelPosition=middle;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="225.0" y="2070.0" width="30" height="30" />
+        </mxCell>
+        <mxCell id="edge0" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="start" target="record">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge1" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="record" target="check">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge2" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="check" target="ready">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge3" value="[no]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="ready" target="blocked">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="-26.28125" y="-24.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge4" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="blocked" target="end_blocked">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge5" value="[yes]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="ready" target="capture">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="40.078125" y="-3.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge6" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="capture" target="recording_ui">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge7" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="recording_ui" target="speak">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <Array as="points">
+              <mxPoint x="780" y="720.0" />
+              <mxPoint x="300" y="720.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge8" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="speak" target="stop">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge9" value="Save entry" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="stop" target="save_audio">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="63.34375" y="5.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge10" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="save_audio" target="audio_saved">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge11" value="[no]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="audio_saved" target="audio_error">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="-26.28125" y="-24.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge12" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="audio_error" target="end_audio_error">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge13" value="[yes]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="audio_saved" target="processing_ui">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="245.078125" y="-61.0" />
+            <Array as="points">
+              <mxPoint x="1260" y="1195" />
+              <mxPoint x="780" y="1195" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge14" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="processing_ui" target="transcribe">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <Array as="points">
+              <mxPoint x="780" y="1305.0" />
+              <mxPoint x="1260" y="1305.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge15" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="transcribe" target="text_valid">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge16" value="[no]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="text_valid" target="text_error">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="-26.28125" y="-24.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge17" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="text_error" target="end_text_error">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge18" value="[yes] / Save transcript" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="text_valid" target="save_text">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="108.765625" y="-6.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge19" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="save_text" target="text_saved">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge20" value="[no]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="text_saved" target="save_text_error">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="-26.28125" y="-24.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge21" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="save_text_error" target="end_save_text_error">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge22" value="[yes]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="text_saved" target="show_entry">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="250.078125" y="-46.0" />
+            <Array as="points">
+              <mxPoint x="1260" y="1910" />
+              <mxPoint x="780" y="1910" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge23" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="show_entry" target="review_entry">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <Array as="points">
+              <mxPoint x="780" y="2060.0" />
+              <mxPoint x="300" y="2060.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge24" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="review_entry" target="done">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="note0" value="Precondition: onboarding is complete. A1/A5/A6 mark the matching alternative flows in the specification." style="text;html=0;align=left;fontSize=15;fontColor=#536B78;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="2327" width="1440" height="30" />
+        </mxCell>
+        <mxCell id="note1" value="Failure branches end this attempt; explicit retries, short recordings, cancellation and interruption are in §2.2." style="text;html=0;align=left;fontSize=15;fontColor=#536B78;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="2357" width="1440" height="30" />
+        </mxCell>
+        <mxCell id="note2" value="All processing stays on-device. Receiving AI feedback is a separate use case." style="text;html=0;align=left;fontSize=15;fontColor=#536B78;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="2387" width="1440" height="30" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="UC-F01" name="UC-F01 activity">
+    <mxGraphModel dx="1560" dy="2320" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1560" pageHeight="2320">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Receive language feedback — Create (C) / Read (R)&#10;RUP · UML activity diagram · User / UI / System responsibilities · Create new feedback or read a saved result" style="text;html=0;align=left;verticalAlign=middle;fontSize=24;fontColor=#17313E;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="35" width="1440" height="80" />
+        </mxCell>
+        <mxCell id="lane0" value="User&#10;Learner actions" style="swimlane;horizontal=1;startSize=82;html=0;rounded=0;collapsible=0;fontSize=19;fillColor=#FFFFFF;swimlaneFillColor=#F2F6FC;strokeColor=#B9CBD4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="140" width="480" height="1990" />
+        </mxCell>
+        <mxCell id="lane1" value="UI&#10;Screens, status and messages" style="swimlane;horizontal=1;startSize=82;html=0;rounded=0;collapsible=0;fontSize=19;fillColor=#FFFFFF;swimlaneFillColor=#F1F8F7;strokeColor=#B9CBD4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="140" width="480" height="1990" />
+        </mxCell>
+        <mxCell id="lane2" value="System / backend&#10;Local / server steps marked" style="swimlane;horizontal=1;startSize=82;html=0;rounded=0;collapsible=0;fontSize=19;fillColor=#FFFFFF;swimlaneFillColor=#F5F5FA;strokeColor=#B9CBD4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1020" y="140" width="480" height="1990" />
+        </mxCell>
+        <mxCell id="start" value="" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;ellipse;fillColor=#17313E;strokeColor=#17313E;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="230.0" y="115.0" width="20" height="20" />
+        </mxCell>
+        <mxCell id="request" value="Choose Get feedback" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="65.0" y="172.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="read_entry" value="Read entry, profile and&#10;any saved feedback (device)" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="65.0" y="172.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="cached" value="Saved feedback&#10;available?" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rhombus;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="130.0" y="292.0" width="220" height="96" />
+        </mxCell>
+        <mxCell id="show_cached" value="Show saved feedback (R)" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="302.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="read_cached" value="Read saved suggestions" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="65.0" y="442.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="cached_done" value="Feedback available" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;shape=doubleEllipse;fillColor=#17313E;strokeColor=#17313E;fontSize=14;labelPosition=right;align=left;verticalLabelPosition=middle;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="225.0" y="560.0" width="30" height="30" />
+        </mxCell>
+        <mxCell id="check_online" value="Check connectivity (device)" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="65.0" y="442.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="online" value="Online?" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rhombus;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="130.0" y="562.0" width="220" height="96" />
+        </mxCell>
+        <mxCell id="offline_ui" value="Show offline state; offer&#10;retry or return to journal (A3)" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="572.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="offline_done" value="Deferred" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;shape=doubleEllipse;fillColor=#17313E;strokeColor=#17313E;fontSize=14;labelPosition=right;align=left;verticalLabelPosition=middle;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="225.0" y="690.0" width="30" height="30" />
+        </mxCell>
+        <mxCell id="pending_ui" value="Show Preparing feedback;&#10;disable Get feedback" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="772.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="send" value="Send transcript + profile&#10;securely (device → server)" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="65.0" y="902.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="analyse" value="Request analysis; return result&#10;(server / external AI service)" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="65.0" y="1032.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="validate" value="Validate response&#10;(device)" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="65.0" y="1162.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="valid" value="Usable&#10;response?" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rhombus;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="130.0" y="1272.0" width="220" height="96" />
+        </mxCell>
+        <mxCell id="failure_ui" value="Explain request / data failure;&#10;offer retry (A4)" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="1282.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="failure_done" value="No feedback saved" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;shape=doubleEllipse;fillColor=#17313E;strokeColor=#17313E;fontSize=14;labelPosition=right;align=left;verticalLabelPosition=middle;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="225.0" y="1400.0" width="30" height="30" />
+        </mxCell>
+        <mxCell id="save" value="Save new feedback (C); update&#10;profile once (U) — device" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="65.0" y="1452.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="saved" value="Local save&#10;succeeded?" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rhombus;" vertex="1" parent="lane2">
+          <mxGeometry as="geometry" x="130.0" y="1562.0" width="220" height="96" />
+        </mxCell>
+        <mxCell id="save_error" value="Show result as unsaved;&#10;offer local-save retry (A6)" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="1572.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="save_error_done" value="Unsaved result" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;shape=doubleEllipse;fillColor=#17313E;strokeColor=#17313E;fontSize=14;labelPosition=right;align=left;verticalLabelPosition=middle;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="225.0" y="1690.0" width="30" height="30" />
+        </mxCell>
+        <mxCell id="show_feedback" value="Show grammar and vocabulary&#10;suggestions; allow empty lists" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane1">
+          <mxGeometry as="geometry" x="65.0" y="1812.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="read_feedback" value="Read new feedback" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="65.0" y="1812.0" width="350" height="76" />
+        </mxCell>
+        <mxCell id="done" value="Feedback available" style="html=0;fontSize=18;fontColor=#17313E;strokeColor=#B9CBD4;fillColor=#FFFFFF;shape=doubleEllipse;fillColor=#17313E;strokeColor=#17313E;fontSize=14;labelPosition=right;align=left;verticalLabelPosition=middle;" vertex="1" parent="lane0">
+          <mxGeometry as="geometry" x="225.0" y="1930.0" width="30" height="30" />
+        </mxCell>
+        <mxCell id="edge0" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="start" target="request">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge1" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="request" target="read_entry">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge2" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="read_entry" target="cached">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge3" value="[yes] A1 / R" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="cached" target="show_cached">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="-25.953125" y="-24.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge4" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="show_cached" target="read_cached">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <Array as="points">
+              <mxPoint x="780" y="550.0" />
+              <mxPoint x="300" y="550.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge5" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="read_cached" target="cached_done">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge6" value="[no]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="cached" target="check_online">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="36.21875" y="-1.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge7" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="check_online" target="online">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge8" value="[no]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="online" target="offline_ui">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="-26.28125" y="-24.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge9" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="offline_ui" target="offline_done">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge10" value="[yes]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="online" target="pending_ui">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="245.078125" y="-51.0" />
+            <Array as="points">
+              <mxPoint x="1260" y="890" />
+              <mxPoint x="780" y="890" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge11" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="pending_ui" target="send">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <Array as="points">
+              <mxPoint x="780" y="1015.0" />
+              <mxPoint x="1260" y="1015.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge12" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="send" target="analyse">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge13" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="analyse" target="validate">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge14" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="validate" target="valid">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge15" value="[no]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="valid" target="failure_ui">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="-26.28125" y="-24.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge16" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="failure_ui" target="failure_done">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge17" value="[yes] / Save feedback" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="valid" target="save">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="106.8125" y="-6.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge18" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="save" target="saved">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge19" value="[no]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="saved" target="save_error">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="-26.28125" y="-24.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge20" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="save_error" target="save_error_done">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge21" value="[yes]" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="saved" target="show_feedback">
+          <mxGeometry as="geometry" x="0" y="0" relative="1">
+            <mxPoint as="offset" x="280.078125" y="-11.0" />
+            <Array as="points">
+              <mxPoint x="1260" y="1875.0" />
+              <mxPoint x="780" y="1875.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge22" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="show_feedback" target="read_feedback">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="edge23" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#536B78;fontSize=15;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="read_feedback" target="done">
+          <mxGeometry as="geometry" x="0" y="0" relative="1" />
+        </mxCell>
+        <mxCell id="note0" value="Precondition: saved entry, non-empty transcript and local profile. New learning patterns update the profile once (U)." style="text;html=0;align=left;fontSize=15;fontColor=#536B78;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="2167" width="1440" height="30" />
+        </mxCell>
+        <mxCell id="note1" value="Failure branches end this attempt. Retry, missing-transcript and leaving-screen behaviour are detailed in §2.2." style="text;html=0;align=left;fontSize=15;fontColor=#536B78;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="2197" width="1440" height="30" />
+        </mxCell>
+        <mxCell id="note2" value="Only text and a profile summary reach the server / AI service. Audio, saved feedback and the profile stay on-device." style="text;html=0;align=left;fontSize=15;fontColor=#536B78;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="2227" width="1440" height="30" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
