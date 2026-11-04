@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net" type="device">
   <diagram id="UC-O01" name="UC-O01 activity">
-    <mxGraphModel dx="1560" dy="2010" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1560" pageHeight="2010">
+    <mxGraphModel dx="1560" dy="2010" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1560" pageHeight="2077">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -209,11 +209,11 @@
         <mxCell id="note2" value="All processing and storage shown here stay on the device; no login or AI request is performed." style="text;html=0;align=left;fontSize=15;fontColor=#536B78;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="60" y="1917" width="1440" height="30" />
         </mxCell>
-      </root>
+      <mxCell id="UC-O01-week5-coverage" value="Week 5 · 4 November 2026&#10;O01 main flow · O02 A1 correction · O03 A3 Back · O04 A5 retry · O05 A5 leave" style="text;html=0;align=left;verticalAlign=middle;fontSize=16;fontColor=#087E80;" vertex="1" parent="1"><mxGeometry x="60" y="1977.0" width="1440" height="65" as="geometry" /></mxCell></root>
     </mxGraphModel>
   </diagram>
   <diagram id="UC-J01" name="UC-J01 activity">
-    <mxGraphModel dx="1560" dy="2480" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1560" pageHeight="2480">
+    <mxGraphModel dx="1560" dy="2480" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1560" pageHeight="2547">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -432,11 +432,11 @@
         <mxCell id="note2" value="All processing stays on-device. Receiving AI feedback is a separate use case." style="text;html=0;align=left;fontSize=15;fontColor=#536B78;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="60" y="2387" width="1440" height="30" />
         </mxCell>
-      </root>
+      <mxCell id="UC-J01-week5-coverage" value="Week 5 · 4 November 2026&#10;J01 main flow · J02 A1 readiness · J03 A5 audio save · J04 A6 transcription · J05 A5 transcript save" style="text;html=0;align=left;verticalAlign=middle;fontSize=16;fontColor=#087E80;" vertex="1" parent="1"><mxGeometry x="60" y="2447.0" width="1440" height="65" as="geometry" /></mxCell></root>
     </mxGraphModel>
   </diagram>
   <diagram id="UC-F01" name="UC-F01 activity">
-    <mxGraphModel dx="1560" dy="2320" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1560" pageHeight="2320">
+    <mxGraphModel dx="1560" dy="2320" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1560" pageHeight="2387">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -642,7 +642,7 @@
         <mxCell id="note2" value="Only text and a profile summary reach the server / AI service. Audio, saved feedback and the profile stay on-device." style="text;html=0;align=left;fontSize=15;fontColor=#536B78;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="60" y="2227" width="1440" height="30" />
         </mxCell>
-      </root>
+      <mxCell id="UC-F01-week5-coverage" value="Week 5 · 4 November 2026&#10;F01 main flow · F02 A1 cached · F03 A3 offline · F04 A4 invalid · F05 A5 empty · F06 A6 save" style="text;html=0;align=left;verticalAlign=middle;fontSize=16;fontColor=#087E80;" vertex="1" parent="1"><mxGeometry x="60" y="2287.0" width="1440" height="65" as="geometry" /></mxCell></root>
     </mxGraphModel>
   </diagram>
 </mxfile>

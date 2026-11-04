@@ -1,0 +1,10 @@
+{
+  "cucumber.features": ["features/*.feature"],
+  "cucumber.glue": ["features/step_definitions/*.js"],
+  "[cucumber]": {
+    "editor.defaultFormatter": "CucumberOpen.cucumber-official",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "files.associations": { "*.feature": "cucumber" }
+}

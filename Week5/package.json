@@ -1,0 +1,13 @@
+{
+  "name": "talk2me-week5-specifications",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Week 5 Gherkin authoring and binding scaffold; not the Talk2Me app",
+  "engines": { "node": "22 || 24 || >=26" },
+  "scripts": {
+    "check": "node scripts/check-features.cjs",
+    "bdd:dry-run": "cucumber-js --dry-run",
+    "bdd": "cucumber-js"
+  },
+  "devDependencies": { "@cucumber/cucumber": "13.3.0" }
+}

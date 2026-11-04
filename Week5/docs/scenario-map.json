@@ -1,0 +1,130 @@
+[
+  {
+    "id": "O01",
+    "uc": "UC-O01",
+    "name": "Save a valid initial profile",
+    "source": "Basic 1\u20139",
+    "path": "Form \u2192 valid \u2192 Finish setup \u2192 save succeeds \u2192 profile ready",
+    "outcome": "One local profile; journal opens"
+  },
+  {
+    "id": "O02",
+    "uc": "UC-O01",
+    "name": "Correct a missing target language before saving",
+    "source": "A1 \u2192 basic flow",
+    "path": "Valid choices? [no] A1 \u2192 form \u2192 [yes] \u2192 save",
+    "outcome": "Field error, retained level; corrected profile saved"
+  },
+  {
+    "id": "O03",
+    "uc": "UC-O01",
+    "name": "Change unsaved choices from the privacy notice",
+    "source": "A3 \u2192 basic flow",
+    "path": "Learner choice [Back] A3 \u2192 form \u2192 Finish setup \u2192 save",
+    "outcome": "Changed unsaved selections used in one new profile"
+  },
+  {
+    "id": "O04",
+    "uc": "UC-O01",
+    "name": "Retry a failed profile save",
+    "source": "A5 \u2192 basic flow",
+    "path": "Save succeeded? [no] A5 \u2192 Try again \u2192 save [yes]",
+    "outcome": "No false success; retry creates one profile"
+  },
+  {
+    "id": "O05",
+    "uc": "UC-O01",
+    "name": "Leave setup after a failed profile save",
+    "source": "A5 \u2192 A4",
+    "path": "Save succeeded? [no] A5 \u2192 [leave] \u2192 setup incomplete",
+    "outcome": "No completed profile; prior data unchanged"
+  },
+  {
+    "id": "J01",
+    "uc": "UC-J01",
+    "name": "Save a recording and its transcript locally",
+    "source": "Basic 1\u20138",
+    "path": "Ready [yes] \u2192 audio saved [yes] \u2192 transcript non-empty [yes] \u2192 transcript saved [yes]",
+    "outcome": "One entry; local playback/transcript; no transmission"
+  },
+  {
+    "id": "J02",
+    "uc": "UC-J01",
+    "name": "Explain denied microphone access",
+    "source": "A1",
+    "path": "Ready to record? [no] \u2192 explain permission problem \u2192 not started",
+    "outcome": "No recording or completed entry"
+  },
+  {
+    "id": "J03",
+    "uc": "UC-J01",
+    "name": "Report a failed audio save",
+    "source": "A5 at step 5",
+    "path": "Ready [yes] \u2192 Audio saved? [no] \u2192 save error",
+    "outcome": "Recoverable audio retained; retry offered; attempt incomplete"
+  },
+  {
+    "id": "J04",
+    "uc": "UC-J01",
+    "name": "Keep saved audio when transcription finds no speech",
+    "source": "A6",
+    "path": "Audio saved [yes] \u2192 Non-empty transcript? [no] \u2192 transcript pending",
+    "outcome": "Saved audio retained; feedback unavailable; retry/leave offered"
+  },
+  {
+    "id": "J05",
+    "uc": "UC-J01",
+    "name": "Report a failed transcript save",
+    "source": "A5 at step 7",
+    "path": "Audio saved [yes] \u2192 Non-empty transcript [yes] \u2192 Transcript saved? [no]",
+    "outcome": "Saved audio retained; transcript-save retry offered"
+  },
+  {
+    "id": "F01",
+    "uc": "UC-F01",
+    "name": "Save and display new language feedback",
+    "source": "Basic 1\u20138",
+    "path": "Saved feedback [no] \u2192 online [yes] \u2192 usable [yes] \u2192 local save [yes]",
+    "outcome": "New feedback saved/displayed; profile updated once"
+  },
+  {
+    "id": "F02",
+    "uc": "UC-F01",
+    "name": "Read saved feedback while offline",
+    "source": "A1",
+    "path": "Saved feedback available? [yes] A1/R \u2192 display/read saved feedback",
+    "outcome": "No network request or repeated profile update"
+  },
+  {
+    "id": "F03",
+    "uc": "UC-F01",
+    "name": "Defer new feedback while offline",
+    "source": "A3",
+    "path": "Saved feedback [no] \u2192 Online? [no] \u2192 offline message \u2192 deferred",
+    "outcome": "No new request or available result"
+  },
+  {
+    "id": "F04",
+    "uc": "UC-F01",
+    "name": "Reject an unusable feedback response",
+    "source": "A4",
+    "path": "Saved feedback [no] \u2192 Online [yes] \u2192 Usable response? [no]",
+    "outcome": "Failure message; no saved feedback/profile update"
+  },
+  {
+    "id": "F05",
+    "uc": "UC-F01",
+    "name": "Accept valid feedback with empty suggestion lists",
+    "source": "A5 \u2192 basic 6\u20138",
+    "path": "Usable response? [yes, empty lists valid] \u2192 save [yes] \u2192 display empty categories",
+    "outcome": "Saved valid empty result; no invented corrections"
+  },
+  {
+    "id": "F06",
+    "uc": "UC-F01",
+    "name": "Mark received feedback as unsaved after a storage failure",
+    "source": "A6",
+    "path": "Usable response [yes] \u2192 Local save succeeded? [no] \u2192 unsaved result",
+    "outcome": "Recoverable result; local retry offered; prior profile intact"
+  }
+]

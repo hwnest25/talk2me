@@ -1,7 +1,7 @@
 # Talk2Me — Use-Case Specification
 
 **UC-J01: Record a spoken journal entry**  
-Version 0.3 — draft for team review
+Version 0.4 — draft for team review
 
 **CRUD: Create (C) — journal entry.**
 
@@ -12,6 +12,7 @@ Version 0.3 — draft for team review
 | 2026-10-26 | 0.1 | Initial specification and visuals; subsequently uploaded by the team | ChatGPT, for Team Talk2Me |
 | 2026-10-27 | 0.2 | Verified RUP outline; expanded explicit CRUD labels; linked onboarding prerequisite | ChatGPT, for Team Talk2Me |
 | 2026-10-27 | 0.3 | Rechecked teacher examples; added User/UI/System swimlanes, Save labels and visible RUP identification | ChatGPT, for Team Talk2Me |
+| 2026-11-04 | 0.4 | Added Gherkin narrative, scenario mapping and Week 5 coverage notes | ChatGPT, for Team Talk2Me; team review pending |
 
 ## 1. Use-Case Name
 
@@ -19,7 +20,7 @@ Version 0.3 — draft for team review
 
 | Field | Definition |
 | --- | --- |
-| Documentation standard | **RUP Use-Case Specification:** sections 1–6; brief description deferred as permitted by the teacher |
+| Documentation standard | **RUP Use-Case Specification:** sections 1–6; narrative linked beside the activity diagram |
 | Identifier | UC-J01 |
 | Primary actor | Learner who has completed local onboarding |
 | Goal | Save one spoken journal entry with its transcript on the device |
@@ -27,13 +28,13 @@ Version 0.3 — draft for team review
 | Scope | Talk2Me mobile app; December delivery |
 | CRUD classification | **Create (C) — Journal entry.** Recording and transcription produce one new entry; this is not a combined Create/Read/Update/Delete management use case. |
 | Included behaviour | Transcribe audio entry — SRS 3.1.3 |
-| SRS traceability | [SRS 3.1.2–3.1.3](https://github.com/hwnest25/talk2me/blob/04941a6c6d483d5e880726dcab42ce00f5e72737/docs/SoftwareRequirementsSpecification.md#31-functionality) |
+| SRS traceability | [SRS 3.1.2–3.1.3](../SoftwareRequirementsSpecification.md#31-functionality) |
 
 The actor is the SRS's **Learner**. Completing onboarding does not require an external account. Editing or deleting completed entries, viewing history, and requesting AI feedback are outside this goal. [UC-F01](UC-F01_ReceiveLanguageFeedback.md) may be started separately after a transcript is ready.
 
 ### 1.1 Brief Description
 
-Deferred until the `.feature` work, as permitted by the assignment.
+The learner records a spoken entry and saves its audio and transcript locally. Readiness, audio-save, transcription, and transcript-save failures are handled without claiming that incomplete work is ready.
 
 ## 2. Flow of Events
 
@@ -85,6 +86,24 @@ These follow the teacher's User/System/UI partitioning. “System / backend” m
 **RUP** is named in the diagram heading. UML activity notation supplies the swimlanes, actions, decisions and initial/final nodes. **Save** labels identify persistence transitions; they do not add a separate Save button where the written flow saves automatically.
 
 [Editable draw.io diagrams — UC-J01 page](assets/Talk2Me_Activity_Diagrams.drawio)
+
+
+
+#### Gherkin narrative and path coverage
+
+[Read the complete narrative: record_journal_entry.feature](../../features/record_journal_entry.feature) · [Scenario mapping](../week5/Scenario_Mapping.md)
+
+The `.feature` file is the authoritative narrative. It is linked here beside the activity diagram to avoid maintaining a second copy. These scenarios are specified and dry-run checked; their app bindings remain pending.
+
+| Scenario | Flow | Outcome |
+| --- | --- | --- |
+| J01 — Save a recording and its transcript locally | Basic 1–8 | One entry; local playback/transcript; no transmission |
+| J02 — Explain denied microphone access | A1 | No recording or completed entry |
+| J03 — Report a failed audio save | A5 at step 5 | Recoverable audio retained; retry offered; attempt incomplete |
+| J04 — Keep saved audio when transcription finds no speech | A6 | Saved audio retained; feedback unavailable; retry/leave offered |
+| J05 — Report a failed transcript save | A5 at step 7 | Saved audio retained; transcript-save retry offered |
+
+The remaining alternative flows stay documented below; this set does not claim exhaustive coverage.
 
 #### 2.1.2 Mockup
 

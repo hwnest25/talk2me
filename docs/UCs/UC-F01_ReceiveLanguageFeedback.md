@@ -1,7 +1,7 @@
 # Talk2Me — Use-Case Specification
 
 **UC-F01: Receive language feedback**  
-Version 0.3 — draft for team review
+Version 0.4 — draft for team review
 
 **CRUD: Create (C) — new feedback; Read (R) — saved feedback.**
 
@@ -12,6 +12,7 @@ Version 0.3 — draft for team review
 | 2026-10-26 | 0.1 | Initial specification and visuals; subsequently uploaded by the team | ChatGPT, for Team Talk2Me |
 | 2026-10-27 | 0.2 | Verified RUP outline; expanded explicit CRUD labels; linked onboarding prerequisite | ChatGPT, for Team Talk2Me |
 | 2026-10-27 | 0.3 | Rechecked teacher examples; added User/UI/System swimlanes, Save labels and visible RUP identification; corrected feedback CRUD classification | ChatGPT, for Team Talk2Me |
+| 2026-11-04 | 0.4 | Added Gherkin narrative, scenario mapping and Week 5 coverage notes | ChatGPT, for Team Talk2Me; team review pending |
 
 ## 1. Use-Case Name
 
@@ -19,7 +20,7 @@ Version 0.3 — draft for team review
 
 | Field | Definition |
 | --- | --- |
-| Documentation standard | **RUP Use-Case Specification:** sections 1–6; brief description deferred as permitted by the teacher |
+| Documentation standard | **RUP Use-Case Specification:** sections 1–6; narrative linked beside the activity diagram |
 | Identifier | UC-F01 |
 | Primary actor | Learner who has completed local onboarding |
 | Supporting actor | External AI feedback service (Anthropic Claude) |
@@ -27,13 +28,13 @@ Version 0.3 — draft for team review
 | Trigger | The learner chooses **Get feedback** for an entry |
 | Scope | Talk2Me app and backend; December delivery |
 | CRUD classification | **Create (C) — Feedback record** in the main flow; **Read (R)** when an existing result is opened in A1. **Update (U)** of the learner profile is a supporting operation. **Delete (D)** is outside scope. |
-| SRS traceability | [SRS 3.1.4 and 3.1.5](https://github.com/hwnest25/talk2me/blob/04941a6c6d483d5e880726dcab42ce00f5e72737/docs/SoftwareRequirementsSpecification.md#31-functionality) |
+| SRS traceability | [SRS 3.1.4 and 3.1.5](../SoftwareRequirementsSpecification.md#31-functionality) |
 
 Grammar and vocabulary are two parts of the same feedback result, not two unrelated user goals. This draft groups them in one specification while retaining their separate SRS references. A future SRS/diagram alignment is recorded in [the review](../../REVIEW.md). Pronunciation assessment, history browsing, and changing feedback settings are outside this goal.
 
 ### 1.1 Brief Description
 
-Deferred until the `.feature` work, as permitted by the assignment.
+The learner requests grammar and vocabulary feedback for one saved entry or reads an existing result. New feedback uses the transcript and compact profile summary; audio and the original transcript remain unchanged.
 
 ## 2. Flow of Events
 
@@ -85,6 +86,25 @@ These follow the teacher's User/System/UI partitioning. “System / backend” m
 **RUP** is named in the diagram heading. UML activity notation supplies the swimlanes, actions, decisions and initial/final nodes. **Save** labels identify persistence transitions; they do not add a separate Save button where the written flow saves automatically.
 
 [Editable draw.io diagrams — UC-F01 page](assets/Talk2Me_Activity_Diagrams.drawio)
+
+
+
+#### Gherkin narrative and path coverage
+
+[Read the complete narrative: receive_language_feedback.feature](../../features/receive_language_feedback.feature) · [Scenario mapping](../week5/Scenario_Mapping.md)
+
+The `.feature` file is the authoritative narrative. It is linked here beside the activity diagram to avoid maintaining a second copy. These scenarios are specified and dry-run checked; their app bindings remain pending.
+
+| Scenario | Flow | Outcome |
+| --- | --- | --- |
+| F01 — Save and display new language feedback | Basic 1–8 | New feedback saved/displayed; profile updated once |
+| F02 — Read saved feedback while offline | A1 | No network request or repeated profile update |
+| F03 — Defer new feedback while offline | A3 | No new request or available result |
+| F04 — Reject an unusable feedback response | A4 | Failure message; no saved feedback/profile update |
+| F05 — Accept valid feedback with empty suggestion lists | A5 → basic 6–8 | Saved valid empty result; no invented corrections |
+| F06 — Mark received feedback as unsaved after a storage failure | A6 | Recoverable result; local retry offered; prior profile intact |
+
+The remaining alternative flows stay documented below; this set does not claim exhaustive coverage.
 
 #### 2.1.2 Mockup
 

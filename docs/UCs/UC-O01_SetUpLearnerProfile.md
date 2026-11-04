@@ -1,7 +1,7 @@
 # Talk2Me — Use-Case Specification
 
 **UC-O01: Set up a learner profile (onboarding)**  
-Version 0.2 — draft for team review
+Version 0.3 — draft for team review
 
 **CRUD: Create (C) — initial learner profile.**
 
@@ -11,6 +11,7 @@ Version 0.2 — draft for team review
 | --- | --- | --- | --- |
 | 2026-10-27 | 0.1 | Initial onboarding specification, mockup and activity diagram | ChatGPT, for Team Talk2Me |
 | 2026-10-27 | 0.2 | Rechecked teacher examples; added User/UI/System swimlanes, Save labels and visible RUP identification | ChatGPT, for Team Talk2Me |
+| 2026-11-04 | 0.3 | Added Gherkin narrative, scenario mapping and Week 5 coverage notes | ChatGPT, for Team Talk2Me; team review pending |
 
 ## 1. Use-Case Name
 
@@ -18,7 +19,7 @@ Version 0.2 — draft for team review
 
 | Field | Definition |
 | --- | --- |
-| Documentation standard | **RUP Use-Case Specification:** sections 1–6; brief description deferred as permitted by the teacher |
+| Documentation standard | **RUP Use-Case Specification:** sections 1–6; narrative linked beside the activity diagram |
 | Identifier | UC-O01 |
 | Primary actor | New Learner setting up Talk2Me on this device |
 | Goal | Create an initial local learner profile so the learner is ready to start journaling |
@@ -32,7 +33,7 @@ Onboarding is the path to the single goal of creating a usable profile. Registra
 
 ### 1.1 Brief Description
 
-Deferred until the `.feature` work, as permitted by the assignment.
+The new learner selects a target language and level, reads the privacy notice, and saves one local profile. Invalid input and failed saves keep setup incomplete until corrected.
 
 ## 2. Flow of Events
 
@@ -82,6 +83,24 @@ These follow the teacher's User/System/UI partitioning. “System / backend” m
 **RUP** is named in the diagram heading. UML activity notation supplies the swimlanes, actions, decisions and initial/final nodes. **Save** labels identify persistence transitions; they do not add a separate Save button where the written flow saves automatically.
 
 [Editable draw.io diagrams — UC-O01 page](assets/Talk2Me_Activity_Diagrams.drawio)
+
+
+
+#### Gherkin narrative and path coverage
+
+[Read the complete narrative: onboarding_profile.feature](../../features/onboarding_profile.feature) · [Scenario mapping](../week5/Scenario_Mapping.md)
+
+The `.feature` file is the authoritative narrative. It is linked here beside the activity diagram to avoid maintaining a second copy. These scenarios are specified and dry-run checked; their app bindings remain pending.
+
+| Scenario | Flow | Outcome |
+| --- | --- | --- |
+| O01 — Save a valid initial profile | Basic 1–9 | One local profile; journal opens |
+| O02 — Correct a missing target language before saving | A1 → basic flow | Field error, retained level; corrected profile saved |
+| O03 — Change unsaved choices from the privacy notice | A3 → basic flow | Changed unsaved selections used in one new profile |
+| O04 — Retry a failed profile save | A5 → basic flow | No false success; retry creates one profile |
+| O05 — Leave setup after a failed profile save | A5 → A4 | No completed profile; prior data unchanged |
+
+The remaining alternative flows stay documented below; this set does not claim exhaustive coverage.
 
 #### 2.1.2 Mockup
 
