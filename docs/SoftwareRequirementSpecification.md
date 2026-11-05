@@ -97,7 +97,7 @@ The full vision includes professional domain tracks (medicine, law, aviation), c
 
 ### 2.2 Use Case Diagram
 
-<img src="use_case_diagram.png" alt="Overall Use Case Diagram" width="700"/>
+<img src="diagrams/use_case_diagram.png" alt="Overall Use Case Diagram" width="700"/>
 
 - **Blue:** Planned for Phase 1
 - **Purple:** Planned for Phase 2
