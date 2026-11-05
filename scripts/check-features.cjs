@@ -6,7 +6,7 @@ const { loadConfiguration, loadSources } = require('@cucumber/cucumber/api');
   const { runConfiguration } = await loadConfiguration();
   const { plan, errors } = await loadSources(runConfiguration.sources);
   assert.equal(errors.length, 0, JSON.stringify(errors, null, 2));
-  const mapping = JSON.parse(fs.readFileSync('docs/scenario-map.json', 'utf8'));
+  const mapping = JSON.parse(fs.readFileSync('docs/acceptance-specifications/scenario-map.json', 'utf8'));
   const names = new Set(plan.map(p => p.name));
   assert.equal(names.size, plan.length, 'Scenario names must be unique');
   assert.equal(plan.length, mapping.length, 'Each scenario needs a diagram mapping');
