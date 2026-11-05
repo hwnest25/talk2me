@@ -1,0 +1,71 @@
+---
+config:
+  theme: redux-color
+  flowchart:
+    subGraphTitleMargin:
+      top: 20
+      bottom: 10
+  layout: elk
+  look: classic
+---
+flowchart LR
+    classDef december fill:#dbeafe,stroke:#3b82f6,color:#1e293b
+    classDef phase1later fill:#e2e8f0,stroke:#94a3b8,color:#475569
+    classDef phase2 fill:#ede9fe,stroke:#7c3aed,color:#1e293b
+
+ subgraph OB["Onboarding"]
+        UC1(["Register account"])
+        UC2(["Log in"])
+        UC3(["Set up profile"])
+        UC4(["Select target language"])
+  end
+ subgraph JO["Journal"]
+        UC5(["Select speaking prompt"])
+        UC6(["Record spoken journal entry"])
+  end
+ subgraph FB["Feedback"]
+        UC7(["Receive grammar feedback"])
+        UC8(["Receive vocabulary feedback"])
+  end
+ subgraph TR["Transcription"]
+        UC9(["Transcribe audio entry"])
+  end
+ subgraph PR["Progress"]
+        UC10(["View entry history"])
+        UC11(["View entry streak"])
+        UC12(["View learner profile"])
+        UC13(["Review daily vocabulary list"])
+  end
+ subgraph AD["Administration"]
+        UC14(["Manage users"])
+        UC15(["View usage analytics"])
+        UC16(["Configure system settings"])
+  end
+ subgraph P1["Phase 1 Features (Blue Nodes = December Delivery, Grey Nodes = Later)"]
+        OB
+        JO
+        FB
+        TR
+        PR
+        AD
+  end
+ subgraph P2["Phase 2 Features"]
+        UC17(["Sync learner profile across devices"])
+        UC18(["Set learning goals"])
+        UC19(["Configure feedback detail level"])
+        UC20(["Receive pronunciation feedback"])
+  end
+ subgraph TM["Talk2Me Use Case Diagram"]
+        P1
+        P2
+  end
+
+    NonRegisteredUser(["fa:fa-user Non-Registered User"]) --- UC1 & UC2
+    RegisteredUser(["fa:fa-user Registered User"]) --- UC2 & UC3 & UC4 & UC5 & UC6 & UC7 & UC8 & UC10 & UC11 & UC12 & UC13 & UC17 & UC18 & UC19
+    Admin(["fa:fa-user Admin"]) --- UC14 & UC15 & UC16
+    UC6 -. «include» .-> UC9
+
+    class UC1,UC2,UC4,UC5,UC6,UC7,UC8,UC9 december
+    class UC3,UC10,UC11,UC12,UC13 phase1later
+    class UC14,UC15,UC16 phase1later
+    class UC17,UC18,UC19,UC20 phase2

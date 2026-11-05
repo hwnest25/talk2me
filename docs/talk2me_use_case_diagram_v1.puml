@@ -1,0 +1,68 @@
+```plantuml
+@startuml
+
+title Talk2Me - Overall Use Case Diagram (Version 1)
+
+left to right direction
+
+actor Learner
+
+rectangle "Talk2Me" {
+
+    rectangle "Onboarding" {
+        usecase "Onboard and set up profile" as UC1
+        usecase "Select target language" as UC2
+    }
+
+    rectangle "Journal" {
+        usecase "Record spoken journal entry" as UC3
+        usecase "Select speaking prompt" as UC4
+    }
+
+    rectangle "Feedback" {
+        usecase "Receive grammar feedback" as UC5
+        usecase "Receive vocabulary feedback" as UC6
+    }
+
+    rectangle "Transcription" {
+        usecase "Transcribe audio entry" as UC7
+    }
+
+    rectangle "Progress" {
+        usecase "View entry history" as UC8
+        usecase "View entry streak" as UC9
+        usecase "View learner profile" as UC10
+        usecase "Review daily vocabulary list" as UC11
+    }
+
+    rectangle "Phase 2 Features" {
+        usecase "Sync learner profile across devices" as UC12
+        usecase "Set learning goals" as UC13
+        usecase "Configure feedback detail level" as UC14
+        usecase "Receive pronunciation feedback" as UC15
+    }
+}
+
+Learner -- UC1
+Learner -- UC2
+
+Learner -- UC3
+Learner -- UC4
+
+Learner -- UC5
+Learner -- UC6
+
+Learner -- UC8
+Learner -- UC9
+Learner -- UC10
+Learner -- UC11
+
+Learner -- UC12
+Learner -- UC13
+Learner -- UC14
+Learner -- UC15
+
+UC3 ..> UC7 : <<include>>
+
+@enduml
+```
