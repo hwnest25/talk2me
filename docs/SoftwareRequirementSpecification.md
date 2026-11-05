@@ -97,10 +97,7 @@ The full vision includes professional domain tracks (medicine, law, aviation), c
 
 ### 2.2 Use Case Diagram
 
-<img src="use_case_diagram.png" alt="Overall Use Case Diagram" width="700"/>
-
-- **Blue:** Planned for Phase 1
-- **Purple:** Planned for Phase 2
+<img src="diagrams/use_case_diagram.png" alt="Overall Use Case Diagram" width="700"/>
 
 - **Blue:** Planned for Phase 1
 - **Purple:** Planned for Phase 2
@@ -138,11 +135,11 @@ The full vision includes professional domain tracks (medicine, law, aviation), c
 This section lists the use cases visible in the Overall Use Case Diagram. Functional requirement detail for each use case will be added in linked use case documents as implementation progresses.
 
 **Phase 1 (planned for implementation):**
-- 3.1.1 Onboard and set up profile ⭐
-- 3.1.2 Record spoken journal entry ⭐
+- 3.1.1 [Onboard and set up profile](use_cases/UC-O01_SetUpLearnerProfile.md) ⭐
+- 3.1.2 [Record spoken journal entry](use_cases/UC-J01_RecordSpokenJournalEntry.md) ⭐
 - 3.1.3 Transcribe audio entry *(included in 3.1.2)* ⭐
-- 3.1.4 Receive grammar feedback ⭐
-- 3.1.5 Receive vocabulary feedback ⭐
+- 3.1.4 [Receive grammar feedback](use_cases/UC-F01_ReceiveLanguageFeedback.md) ⭐
+- 3.1.5 [Receive vocabulary feedback](use_cases/UC-F01_ReceiveLanguageFeedback.md) ⭐
 - 3.1.6 View entry history
 - 3.1.7 View learner profile
 - 3.1.8 Review daily vocabulary list
