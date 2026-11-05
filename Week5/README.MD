@@ -1,1 +1,0 @@
-To execute tests, cd into /week5/, then run npm ci, followed by npm run check
