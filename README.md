@@ -24,7 +24,7 @@ Blog: [talk2me4.wordpress.com](https://talk2me4.wordpress.com)
 
 ## Project Status
 
-Currently in the **Inception phase** (Week 3). The use case diagram and Software Requirements Specification are complete. User research is underway.
+Currently in the **Elaboration phase** (Week 5). Use case specifications and acceptance scenarios are complete. All step definitions are pending connection to the real application.
 
 Phase 1 targets the core record-transcribe-feedback loop. Phase 2 adds personalisation, multi-language support, and cross-device sync.
 
@@ -32,19 +32,35 @@ Phase 1 targets the core record-transcribe-feedback loop. Phase 2 adds personali
 
 ```
 talk2me/
+  features/                         Gherkin feature files (one per use case)
+    step_definitions/               Shared step definitions (all pending)
+  scripts/
+    check-features.cjs              Validates feature files against scenario map
   docs/
-    SoftwareRequirementsSpecification.md   Full SRS
-    use_case_diagram.svg                   Overall use case diagram (source)
-    use_case_diagram.png                   Overall use case diagram (rendered)
+    use_cases/                      Use case specifications (UC-O01, UC-J01, UC-F01)
+      assets/                       Activity diagrams and mockups
+    acceptance-specifications/      Scenario mapping, step inventory, scenario-map.json
+    diagrams/                       Use case diagram source and exports
+  cucumber.cjs                      Cucumber configuration
+  package.json                      npm scripts: bdd, bdd:dry-run, check
 ```
 
-Source code will be added as development begins in Phase 1.
+## Running the Acceptance Scenarios
+
+```bash
+npm install
+npm run bdd:dry-run   # parse and list all scenarios without executing
+npm run bdd           # run all scenarios (all pending until app is connected)
+npm run check         # validate feature files against the scenario map
+```
 
 ## Documentation
 
 - [Software Requirements Specification](./docs/SoftwareRequirementsSpecification.md)
-- [Overall Use Case Diagram](./docs/use_case_diagram.svg)
+- [Use Case: Set Up a Learner Profile](./docs/use_cases/UC-O01_SetUpLearnerProfile.md)
+- [Use Case: Record a Spoken Journal Entry](./docs/use_cases/UC-J01_RecordSpokenJournalEntry.md)
+- [Use Case: Receive Language Feedback](./docs/use_cases/UC-F01_ReceiveLanguageFeedback.md)
 
 ## Overall Use Case Diagram
 
-![Overall Use Case Diagram](docs/use_case_diagram.png)
+![Overall Use Case Diagram](docs/diagrams/use_case_diagram.png)
