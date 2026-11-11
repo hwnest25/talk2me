@@ -1,172 +1,73 @@
-# Talk2Me — Use-Case Specification
+# UC-O01 — Set up a learner profile
 
-**UC-O01: Set up a learner profile (onboarding)**  
-Version 0.3 — draft for team review
-
-**CRUD: Create (C) — initial learner profile.**
-
-## Revision History
-
-| Date | Version | Description | Prepared by |
-| --- | --- | --- | --- |
-| 2026-10-27 | 0.1 | Initial onboarding specification, mockup and activity diagram | ChatGPT, for Team Talk2Me |
-| 2026-10-27 | 0.2 | Rechecked teacher examples; added User/UI/System swimlanes, Save labels and visible RUP identification | ChatGPT, for Team Talk2Me |
-| 2026-11-04 | 0.3 | Added Gherkin narrative, scenario mapping and Week 5 coverage notes | ChatGPT, for Team Talk2Me; team review pending |
+RUP use-case specification · Draft v0.4 · 11 November 2026. Revision history is in Git.
 
 ## 1. Use-Case Name
 
-**Set up a learner profile**
+**Set up a learner profile.** A new learner selects a language and level, reads the privacy notice, and creates one local profile.
 
-| Field | Definition |
-| --- | --- |
-| Documentation standard | **RUP Use-Case Specification:** sections 1–6; narrative linked beside the activity diagram |
-| Identifier | UC-O01 |
-| Primary actor | New Learner setting up Talk2Me on this device |
-| Goal | Create an initial local learner profile so the learner is ready to start journaling |
-| Trigger | The learner opens Talk2Me for initial setup |
-| Scope | Talk2Me mobile app; December onboarding scope in SRS 3.1.1 |
-| CRUD classification | **Create (C) — Learner profile.** The main flow creates one initial profile; later editing and deletion are separate goals. |
-| Supporting actor | None; setup uses local data and does not call an external service |
-| SRS traceability | [3.1.1 Onboard and set up profile](../SoftwareRequirementsSpecification.md#31-functionality); 3.2.1, 3.3.2, 3.6.3, 3.7, 3.9.1 and 3.11 |
-
-Onboarding is the path to the single goal of creating a usable profile. Registration, login, recording an entry, requesting feedback, and later profile management are outside this use case. The SRS rules out requiring an external account but does not settle Talk2Me-specific authentication. This draft uses the SRS's Learner actor and local-profile model; see the [open scope decisions](../../REVIEW.md#design-decisions-and-assumptions).
-
-### 1.1 Brief Description
-
-The new learner selects a target language and level, reads the privacy notice, and saves one local profile. Invalid input and failed saves keep setup incomplete until corrected.
+- **Actor / trigger:** New learner opens Talk2Me for initial setup.
+- **CRUD:** Create (C) profile — primary; Read (R) existing profile in A6. Changing unsaved choices is not Update (U); saved-profile Update (U) and Delete (D) are outside scope.
+- **Traceability:** [SRS 3.1.1](../SoftwareRequirementSpecification.md#31-functionality).
 
 ## 2. Flow of Events
 
 ### 2.1 Basic Flow
 
-1. The learner opens Talk2Me to begin setup.
-2. Talk2Me checks for a completed local profile. In the main flow none exists, so it displays a short welcome and profile form.
-3. The learner selects a supported target language and a self-assessed level. Proposed level choices are **Beginner**, **Intermediate**, **Advanced**, and **Not sure**. If only one target language is supported, it is shown preselected for confirmation.
+1. The learner opens Talk2Me.
+2. Talk2Me checks for a completed profile. If none exists, it shows the welcome and profile form.
+3. The learner selects a supported language and level: Beginner, Intermediate, Advanced or Not sure. A sole supported language is preselected for confirmation.
 4. The learner selects **Continue**.
-5. Talk2Me checks that a supported language and a valid level choice have been supplied.
-6. Talk2Me displays a short privacy notice: recordings stay on the device; requesting AI feedback later sends the transcript and a compact learner-profile summary for analysis; the Talk2Me backend must not retain submitted text after processing. It advises the learner to avoid sensitive personal information in entries. No entry or profile data is transmitted during setup.
-7. The learner selects **Finish setup** to confirm the displayed choices and that they have seen the notice. This action does not request feedback or grant consent to future features.
-8. Talk2Me saves one local profile containing the target language and self-assessed level, initialises empty learning/session history, and marks onboarding complete in the same successful save. Repeated taps must not create duplicates.
-9. Talk2Me confirms that the profile is ready and opens the empty journaling screen. The use case ends successfully. Choosing **Record** later starts [UC-J01](UC-J01_RecordSpokenJournalEntry.md).
-
-The level choices, **Not sure** option, local offline setup, and two-screen arrangement are proposed design choices, not existing implementation. Detailed learning-goal setting is deferred because SRS 3.1.13 assigns it to Phase 2, although SRS 3.9.1 also mentions it during onboarding. This conflict remains recorded in the review.
-
-#### CRUD operations in this use case
-
-| Operation | Role in this goal | Where it occurs |
-| --- | --- | --- |
-| **Create (C)** | Primary operation: create the initial learner profile | Basic flow, step 8 |
-| **Read (R)** | Supporting operation: check whether setup is already complete and show the stored profile summary | Step 2; alternative A6 |
-| **Update (U)** | No editing of an existing saved profile | Changing unsaved selections before step 8 is still part of Create |
-| **Delete (D)** | No deletion of a saved profile | Cancelling unfinished setup discards only unsaved input |
-
-#### 2.1.1 Activity Diagram
-
-![Activity diagram for setting up a learner profile](assets/UC-O01_activity.png)
-
-[Editable SVG](assets/UC-O01_activity.svg)
-
-The diagram shows initial profile creation, validation, returning to the form, and local-save retry or exit. The returning-learner Read path (A6), cancellation and interrupted-save recovery are described below.
-
-
-
-**Responsibility swimlanes:**
-
-| Lane | Responsibility |
-| --- | --- |
-| **User** | Choose profile values, read the notice, finish setup, retry or leave |
-| **UI** | Show the form, privacy notice, field errors and completion state |
-| **System / backend** | Validate choices and save the profile on-device |
-
-These follow the teacher's User/System/UI partitioning. “System / backend” means the logic and data layer; it does not imply that all processing runs on a remote server. The diagram labels processing location where it matters.
-
-**RUP** is named in the diagram heading. UML activity notation supplies the swimlanes, actions, decisions and initial/final nodes. **Save** labels identify persistence transitions; they do not add a separate Save button where the written flow saves automatically.
-
-[Editable draw.io diagrams — UC-O01 page](assets/Talk2Me_Activity_Diagrams.drawio)
-
-
-
-#### Gherkin narrative and path coverage
-
-[Read the complete narrative: onboarding_profile.feature](../../features/onboarding_profile.feature) · [Scenario mapping](../week5/Scenario_Mapping.md)
-
-The `.feature` file is the authoritative narrative. It is linked here beside the activity diagram to avoid maintaining a second copy. These scenarios are specified and dry-run checked; their app bindings remain pending.
-
-| Scenario | Flow | Outcome |
-| --- | --- | --- |
-| O01 — Save a valid initial profile | Basic 1–9 | One local profile; journal opens |
-| O02 — Correct a missing target language before saving | A1 → basic flow | Field error, retained level; corrected profile saved |
-| O03 — Change unsaved choices from the privacy notice | A3 → basic flow | Changed unsaved selections used in one new profile |
-| O04 — Retry a failed profile save | A5 → basic flow | No false success; retry creates one profile |
-| O05 — Leave setup after a failed profile save | A5 → A4 | No completed profile; prior data unchanged |
-
-The remaining alternative flows stay documented below; this set does not claim exhaustive coverage.
-
-#### 2.1.2 Mockup
-
-![Onboarding mockup: profile choices, privacy notice, and profile-ready confirmation](assets/UC-O01_mockup.png)
-
-[Editable SVG](assets/UC-O01_mockup.svg)
-
-English and Intermediate are illustrative selections. The first two screens perform setup; the third confirms completion and offers the separate recording goal. No email, password, microphone permission, or learning-goal form is required in this proposed flow.
+5. Talk2Me validates both choices.
+6. The privacy notice explains that audio stays local; later feedback sends the transcript and compact profile summary; the backend must not retain submitted text. It advises against sensitive personal information.
+7. The learner selects **Finish setup**, confirming the choices and acknowledging the notice. This does not request feedback or consent to future features.
+8. Talk2Me saves the profile, empty learning/session history and completion state together. Repeated taps must not create duplicates.
+9. Talk2Me confirms success and opens the empty journal. Recording later starts [UC-J01](UC-J01_RecordSpokenJournalEntry.md).
 
 ### 2.2 Alternative Flows
 
-#### 2.2.1 A1 — A required selection is missing or invalid
+| Flow | Behaviour |
+| --- | --- |
+| **A1 — Invalid selection** | At step 5, show the affected field and retain other choices. Correct the form from step 3 or leave through A4. Unsupported languages cannot be saved. |
+| **A2 — Level unknown** | At step 3, **Not sure** saves an unspecified level; no assessment is invented. Continue at step 4. |
+| **A3 — Change choices** | From the notice, **Back** restores the current form values; resume at step 3. |
+| **A4 — Cancel or interrupt** | Before a save commits, setup remains incomplete; unsaved choices may be lost. On reopening, reuse a committed profile through A6 or restart setup. Never present a partial profile as ready. |
+| **A5 — Save fails** | Show **Profile not saved**, retain choices while available, and offer **Try again** at step 8 or leave through A4. Keep existing data intact. |
+| **A6 — Existing profile (Read)** | At step 2, load the existing profile and open the journal without creating or overwriting it. |
+| **A7 — Offline** | Continue with bundled choices and local storage. Setup needs no external login, model download or feedback service. |
 
-At step 5, Talk2Me identifies the affected field, explains what to choose, and keeps the other selections. No profile is created. The learner corrects the form and resumes at step 3, or leaves using A4. Unsupported or unavailable languages cannot be saved.
+### 2.3 Activity Diagram and Narrative
 
-#### 2.2.2 A2 — The learner does not know their level
+![Profile setup activity diagram](assets/UC-O01_activity.png)
 
-At step 3, the learner selects **Not sure**. This is valid input. Talk2Me stores the level as unspecified rather than inventing a proficiency assessment. The flow continues at step 4. No placement test is required for this draft.
+[Read the Gherkin narrative](../../features/onboarding_profile.feature) · [Scenario coverage O01–O05](../acceptance-specifications/Scenario_Mapping.md)
 
-#### 2.2.3 A3 — The learner changes their choices
+The diagram covers validation, Back and save retry/exit. Additional alternatives remain specified above. User/UI/System lanes separate interaction, presentation and local application logic. Step definitions are pending.
 
-At step 6, the learner selects **Back**. Talk2Me restores the form with its current selections. The flow resumes at step 3. These are unsaved choices, not an Update operation on a saved profile.
+[SVG](assets/UC-O01_activity.svg) · [draw.io source](assets/Talk2Me_Activity_Diagrams.drawio)
 
-#### 2.2.4 A4 — Setup is cancelled or interrupted
+### 2.4 Mockup
 
-Before step 8 succeeds, the learner can leave the app. No completed profile is claimed; unsaved form choices may be lost. Opening the app again restarts at step 1. If interruption occurs during saving, Talk2Me checks the committed state on reopening: a successfully saved profile follows A6, while an uncommitted write leaves onboarding incomplete. It must not create a duplicate or partially completed profile.
+![Profile setup mockup](assets/UC-O01_mockup.png)
 
-#### 2.2.5 A5 — The profile cannot be saved
-
-At step 8, storage is unavailable or the write fails. Talk2Me shows **Profile not saved**, retains the choices while the app remains open, and offers **Try again**. Retrying returns to step 8 without submitting anything to a server. The learner may instead leave using A4. The app never shows a completed profile until saving succeeds; existing data remains unchanged.
-
-#### 2.2.6 A6 — A completed profile already exists (Read / R)
-
-At step 2, Talk2Me loads the existing profile and opens the journaling screen. This setup attempt ends without creating or overwriting a profile. Editing the saved profile requires a separate use case.
-
-#### 2.2.7 A7 — The device is offline
-
-The flow continues unchanged using the supported-language options, notice and local storage available in the app. Setup does not request AI feedback, download a language model, or require an external login. Microphone and transcription readiness are checked separately when UC-J01 starts.
+[Editable SVG](assets/UC-O01_mockup.svg). English and Intermediate are sample choices.
 
 ## 3. Special Requirements
 
-- **Usability:** Keep the screens short and self-explanatory. SRS 3.2.1 targets onboarding plus the first recording within two minutes; this is a product target, not a tested result or a two-minute allowance for setup alone. SRS 3.7 requires self-explanatory onboarding.
-- **Local storage:** Save the profile and completion state together using transactional storage, consistent with SRS 3.3.2 and 3.6.3. Do not initialise fabricated scores, errors, or past sessions.
-- **Privacy:** Explain the future feedback data flow before completing setup. This use case transmits no learner data and requests no microphone permission. The notice describes required backend behaviour, not verified external-provider retention settings; those remain an implementation check.
-- **Minimal data:** The draft requires only a target language and level choice. **Not sure** remains an unspecified level. No real name, email, password or payment information is needed for this local-profile goal.
-- **Scope:** Goal configuration, notification preferences, profile synchronisation and subsequent profile editing are outside this use case. The exact supported languages and level labels require team confirmation.
+Save profile and completion state transactionally. Send no learner data and request no microphone permission during setup. Do not invent initial scores or history. The SRS target is onboarding **plus first recording within two minutes**; it has not been measured.
+
+**Open design choices:** supported languages, level labels, Not sure and the two-screen arrangement need team confirmation. Learning-goal setup is deferred in this draft; the SRS records the original scope conflict. External-provider retention requires implementation verification.
 
 ## 4. Preconditions
 
-1. Talk2Me is installed and can open on a supported device.
-2. The app includes the profile form, supported-language choices and privacy notice needed for setup.
-
-The main flow assumes no completed local profile; A6 handles a returning learner. Internet access, an external account, microphone permission and a downloaded transcription model are not preconditions for profile creation. Storage failures are handled within the flow.
+Talk2Me opens on a supported device and includes the form, language choices and notice. Internet, external account, microphone access and transcription model are not prerequisites; storage failure is handled in the flow.
 
 ## 5. Postconditions
 
-### 5.1 Success
+**Success:** One completed local profile exists, with the chosen language/level and empty history; the journal is available. A6 reuses the existing profile unchanged. No entry, feedback or data transmission is created.
 
-Exactly one initial learner profile is saved locally with a supported target language and a level choice, or an explicitly unspecified level. Learning and session history are empty, onboarding is marked complete, and the journaling screen is available. No recording or feedback has been created and no learner data has left the device.
-
-For A6, the existing profile remains unchanged and available; no new profile is created.
-
-### 5.2 Cancellation or Failure
-
-If no save committed, onboarding remains incomplete and no partial profile is presented as ready. Unsaved choices can be retried while available or entered again. Existing saved information remains intact. If a save committed before interruption, the completed profile is reused on reopening.
+**Failure/cancellation:** No uncommitted profile is marked complete. Existing data remains intact; a save committed before interruption is reused.
 
 ## 6. Extension Points
 
-None defined in this version. The privacy notice and initial profile choices are part of setup. Recording an entry, registering an account, changing a profile, and setting Phase 2 learning goals are separate goals, not mandatory extensions of this flow.
+None. Recording, profile editing, registration and later learning goals are separate goals.

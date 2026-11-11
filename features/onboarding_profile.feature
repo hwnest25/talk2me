@@ -1,4 +1,4 @@
-# Specification: docs/UCs/UC-O01_SetUpLearnerProfile.md
+# Specification: docs/use_cases/UC-O01_SetUpLearnerProfile.md
 @UC-O01
 Feature: Set up a learner profile
   As a new learner setting up Talk2Me on this device
