@@ -1,170 +1,74 @@
-# Talk2Me — Use-Case Specification
+# UC-J01 — Record a spoken journal entry
 
-**UC-J01: Record a spoken journal entry**  
-Version 0.4 — draft for team review
-
-**CRUD: Create (C) — journal entry.**
-
-## Revision History
-
-| Date | Version | Description | Prepared by |
-| --- | --- | --- | --- |
-| 2026-10-26 | 0.1 | Initial specification and visuals; subsequently uploaded by the team | ChatGPT, for Team Talk2Me |
-| 2026-10-27 | 0.2 | Verified RUP outline; expanded explicit CRUD labels; linked onboarding prerequisite | ChatGPT, for Team Talk2Me |
-| 2026-10-27 | 0.3 | Rechecked teacher examples; added User/UI/System swimlanes, Save labels and visible RUP identification | ChatGPT, for Team Talk2Me |
-| 2026-11-04 | 0.4 | Added Gherkin narrative, scenario mapping and Week 5 coverage notes | ChatGPT, for Team Talk2Me; team review pending |
+RUP use-case specification · Draft v0.5 · 11 November 2026. Revision history is in Git.
 
 ## 1. Use-Case Name
 
-**Record a spoken journal entry**
+**Record a spoken journal entry.** Save one recording and its transcript on the device.
 
-| Field | Definition |
-| --- | --- |
-| Documentation standard | **RUP Use-Case Specification:** sections 1–6; narrative linked beside the activity diagram |
-| Identifier | UC-J01 |
-| Primary actor | Learner who has completed local onboarding |
-| Goal | Save one spoken journal entry with its transcript on the device |
-| Trigger | The learner chooses to record a new entry |
-| Scope | Talk2Me mobile app; December delivery |
-| CRUD classification | **Create (C) — Journal entry.** Recording and transcription produce one new entry; this is not a combined Create/Read/Update/Delete management use case. |
-| Included behaviour | Transcribe audio entry — SRS 3.1.3 |
-| SRS traceability | [SRS 3.1.2–3.1.3](../SoftwareRequirementsSpecification.md#31-functionality) |
-
-The actor is the SRS's **Learner**. Completing onboarding does not require an external account. Editing or deleting completed entries, viewing history, and requesting AI feedback are outside this goal. [UC-F01](UC-F01_ReceiveLanguageFeedback.md) may be started separately after a transcript is ready.
-
-### 1.1 Brief Description
-
-The learner records a spoken entry and saves its audio and transcript locally. Readiness, audio-save, transcription, and transcript-save failures are handled without claiming that incomplete work is ready.
+- **Actor / trigger:** Learner with a local profile selects **Record**.
+- **CRUD:** Create (C) entry — primary; Read (R) for playback; supporting Update (U) attaches its transcript/status. Delete (D) and editing completed entries are outside scope.
+- **Included behaviour:** Transcribe audio entry.
+- **Traceability:** [SRS 3.1.2–3.1.3](../SoftwareRequirementSpecification.md#31-functionality).
 
 ## 2. Flow of Events
 
 ### 2.1 Basic Flow
 
-1. The learner selects **Record** on the journaling screen.
-2. Talk2Me checks microphone access, local transcription availability, and available storage. It starts recording locally and displays the elapsed time.
-3. The learner speaks in the target language. Talk2Me indicates that recording is active.
-4. After at least 30 seconds, the learner selects **Stop and save**. Talk2Me stops recording. Under the draft's two-minute limit, it also stops automatically at 02:00.
-5. Talk2Me saves the recording locally as one entry, with an identifier, date, duration, target language, and a transcription-pending status.
-6. Talk2Me automatically performs the included **Transcribe audio entry** behaviour on the device. The learner does not submit a separate transcription request.
-7. Talk2Me saves the resulting non-empty transcript against that same entry and marks transcription as complete.
-8. Talk2Me displays the saved transcript and local audio playback. The entry is ready for a separate feedback request. The use case ends successfully without sending audio or text to a server.
-
-The automatic two-minute stop and explicit feedback request are draft design decisions; see [review assumptions A1–A2](../../REVIEW.md#design-decisions-and-assumptions).
-
-
-#### CRUD operations in this use case
-
-| Operation | Role in this goal | Where it occurs |
-| --- | --- | --- |
-| **Create (C)** | Primary operation: create one journal entry | Basic flow, step 5 |
-| **Read (R)** | Supporting operation: display the new transcript and play saved audio | Basic flow, step 8 |
-| **Update (U)** | Supporting operation: attach the transcript and change transcription status on that same new entry | Basic flow, step 7; transcription recovery |
-| **Delete (D)** | No deletion of completed entries in this use case | A3 discards unfinished work only; deleting an existing entry is a separate goal |
-
-The supporting operations do not turn this into a general “Manage entries” use case. Editing a completed transcript is outside scope.
-
-#### 2.1.1 Activity Diagram
-
-![UML activity diagram for recording a spoken journal entry](assets/UC-J01_activity.png)
-
-[Editable SVG](assets/UC-J01_activity.svg)
-
-The diagram shows the main flow and principal decision paths. The alternatives below also cover interruption and recovery details.
-
-
-
-**Responsibility swimlanes:**
-
-| Lane | Responsibility |
-| --- | --- |
-| **User** | Start recording, speak, stop and review the entry |
-| **UI** | Show recording/transcription state, errors, transcript and playback |
-| **System / backend** | Capture and transcribe audio and save the entry on-device |
-
-These follow the teacher's User/System/UI partitioning. “System / backend” means the logic and data layer; it does not imply that all processing runs on a remote server. The diagram labels processing location where it matters.
-
-**RUP** is named in the diagram heading. UML activity notation supplies the swimlanes, actions, decisions and initial/final nodes. **Save** labels identify persistence transitions; they do not add a separate Save button where the written flow saves automatically.
-
-[Editable draw.io diagrams — UC-J01 page](assets/Talk2Me_Activity_Diagrams.drawio)
-
-
-
-#### Gherkin narrative and path coverage
-
-[Read the complete narrative: record_journal_entry.feature](../../features/record_journal_entry.feature) · [Scenario mapping](../week5/Scenario_Mapping.md)
-
-The `.feature` file is the authoritative narrative. It is linked here beside the activity diagram to avoid maintaining a second copy. These scenarios are specified and dry-run checked; their app bindings remain pending.
-
-| Scenario | Flow | Outcome |
-| --- | --- | --- |
-| J01 — Save a recording and its transcript locally | Basic 1–8 | One entry; local playback/transcript; no transmission |
-| J02 — Explain denied microphone access | A1 | No recording or completed entry |
-| J03 — Report a failed audio save | A5 at step 5 | Recoverable audio retained; retry offered; attempt incomplete |
-| J04 — Keep saved audio when transcription finds no speech | A6 | Saved audio retained; feedback unavailable; retry/leave offered |
-| J05 — Report a failed transcript save | A5 at step 7 | Saved audio retained; transcript-save retry offered |
-
-The remaining alternative flows stay documented below; this set does not claim exhaustive coverage.
-
-#### 2.1.2 Mockup
-
-![Journaling screen mockup: ready to record, recording, and saved transcript](assets/UC-J01_mockup.png)
-
-[Editable SVG](assets/UC-J01_mockup.svg)
-
-The three screens show the progression through one entry. English and the sample transcript are illustrative. **Get feedback** starts UC-F01; it is not part of recording. The mockup does not add history, prompt selection, or other later-phase features.
+1. The learner selects **Record** on the journal screen.
+2. Talk2Me checks microphone access, local model readiness and storage, then starts local recording and an elapsed-time display.
+3. The learner speaks; the interface shows that recording is active.
+4. After at least 30 seconds, the learner selects **Stop and save**. The draft also proposes automatic stopping at two minutes.
+5. Talk2Me saves one local entry with audio, identifier, date, duration, target language and transcription-pending status.
+6. Talk2Me automatically transcribes the saved audio on-device.
+7. Talk2Me saves the non-empty transcript to the same entry and marks transcription complete.
+8. The learner can read the transcript and play the audio. [UC-F01](UC-F01_ReceiveLanguageFeedback.md) may be requested separately. No audio or text is transmitted here.
 
 ### 2.2 Alternative Flows
 
-#### 2.2.1 A1 — Recording cannot start
+| Flow | Behaviour |
+| --- | --- |
+| **A1 — Not ready** | At step 2, explain denied/unavailable microphone, missing model or insufficient storage. Do not record. Resolve and retry step 2, or leave. |
+| **A2 — Too short** | Before 30 seconds, **Stop and save** is unavailable. Show the remaining time and keep recording; cancellation remains available. |
+| **A3 — Cancel** | Before step 5, **Cancel recording** asks for confirmation. Keeping returns to recording; confirming discards only the unfinished recording. |
+| **A4 — Interrupted** | Retain recoverable audio and mark it unfinished. On recovery, a recording of at least 30 seconds can be confirmed and saved at step 5; otherwise discard/restart. Preserve existing entries. |
+| **A5 — Local save fails** | At step 5 or 7, show failure without a success message. Retain recoverable audio/transcript and offer a local retry. Resume after a successful save without duplication; explain any recovery limit. |
+| **A6 — Transcription fails/empty** | Keep saved audio and mark transcription pending. Retry step 6 or leave. Feedback remains unavailable until a non-empty transcript exists. |
 
-At step 2, microphone permission is denied, the microphone is unavailable, the transcription model is not ready, or storage is insufficient. Talk2Me explains the relevant problem and does not start recording. The learner can resolve it and retry step 2, or leave. No completed entry is created.
+### 2.3 Activity Diagram and Narrative
 
-#### 2.2.2 A2 — Entry is too short
+![Journal entry activity diagram](assets/UC-J01_activity.png)
 
-At step 4, selecting **Stop and save** before 30 seconds is unavailable. Talk2Me shows how much more recording time is needed and continues capturing audio. The learner can continue to step 4 or cancel using A3.
+[Read the Gherkin narrative](../../features/record_journal_entry.feature) · [Scenario coverage J01–J05](../acceptance-specifications/Scenario_Mapping.md)
 
-#### 2.2.3 A3 — Learner cancels
+User/UI/System lanes separate actions, presentation and local processing. The diagram shows principal decision paths; interruption and recovery details remain above. The scenarios check recovery offers, not complete retry loops. Step definitions are pending.
 
-Before step 5, the learner selects **Cancel recording**. Talk2Me asks whether to discard the current recording. Keeping it returns to the current recording state. Confirming discards only this unfinished recording and ends the use case without a new completed entry.
+[SVG](assets/UC-J01_activity.svg) · [draw.io source](assets/Talk2Me_Activity_Diagrams.drawio)
 
-#### 2.2.4 A4 — Recording is interrupted
+### 2.4 Mockup
 
-If a call, app interruption, or unexpected termination stops capture, Talk2Me retains recoverable audio locally and clearly marks it as unfinished. On recovery, the learner can confirm an entry of at least 30 seconds and continue at step 5, or discard it and start a new attempt. A shorter recovered recording is not presented as a completed entry. Existing entries remain unchanged.
+![Journal recording mockup](assets/UC-J01_mockup.png)
 
-#### 2.2.5 A5 — A local save fails
-
-At step 5 or 7, Talk2Me does not announce a successful save. It explains the failure and keeps any recoverable recording or transcript available for another local save attempt. A successful retry resumes at the following step without creating a duplicate entry. If recovery cannot be guaranteed, that limitation is stated to the learner; existing saved entries remain intact.
-
-#### 2.2.6 A6 — Transcription fails or contains no recognised speech
-
-At step 6 or 7, Talk2Me keeps the saved audio, marks the entry as needing transcription, and explains the problem. The learner can retry step 6 or leave with the recording saved. No feedback request is available until a non-empty transcript exists. Recording another entry is a new execution of UC-J01.
+[Editable SVG](assets/UC-J01_mockup.svg). Screen content is illustrative.
 
 ## 3. Special Requirements
 
-- **Local processing:** Recording, transcription, and saving work offline once the model is available. Audio never leaves the device. No transcript is transmitted in this use case. SRS 3.3.1, 3.6.1 and 3.9.4.
-- **Duration:** The minimum completed recording is 30 seconds, per SRS 3.2.3. The two-minute automatic stop is a proposed interpretation of the range in SRS 2.1.
-- **Performance target:** A two-minute entry should transcribe within 10 seconds on a 2022-or-later device, per SRS 3.4.1. This is an inherited requirement, not a measured result.
-- **Data integrity:** Save the audio before transcription; use transactional database writes and recoverable local recording storage. Do not overwrite earlier entries. SRS 3.3.2. Recovery limits during a crash or storage exhaustion require implementation testing.
-- **Usability:** Show recording, processing, saved, and failure states distinctly. Display the original transcript without silently replacing it with AI-corrected text.
-- **Platform:** iOS 15+ and Android 10+, using the mandated Flutter frontend, per SRS 3.6.2.
+- Recording, transcription and saving work offline once the model is available. Audio stays local; this flow also sends no transcript.
+- Minimum completed duration: **30 seconds**. The **two-minute automatic stop remains a proposed design choice**.
+- Target: transcribe a two-minute entry within **10 seconds** on a 2022-or-later device; not yet measured.
+- Save audio before transcription; use transactional writes and recoverable storage. Test crash/storage-exhaustion recovery limits. Never silently rewrite the transcript.
+- Show recording, processing, saved and failed states distinctly. Platform: Flutter, iOS 15+ and Android 10+.
 
 ## 4. Preconditions
 
-1. The learner has completed [UC-O01: Set up a learner profile](UC-O01_SetUpLearnerProfile.md), with a target language and a local learner profile.
-2. The journaling screen is accessible on a supported device.
-
-Internet access and an external account are not preconditions. Microphone permission, model readiness, and storage are checked in the flow so their failures are handled explicitly.
+The learner completed [UC-O01](UC-O01_SetUpLearnerProfile.md), has a local profile and target language, and can access the journal. Internet and an external account are unnecessary. Readiness checks occur inside the flow.
 
 ## 5. Postconditions
 
-### 5.1 Success
+**Success:** One local entry contains audio, metadata and transcript, ready for playback and a separate feedback request. No entry data was transmitted.
 
-One new journal entry is saved locally with its audio, metadata, and transcript. The learner can read the transcript, play the audio, and choose to request feedback. No entry data has been transmitted.
-
-### 5.2 Cancellation or Failure
-
-Existing entries remain unchanged. Confirmed cancellation removes only the unfinished recording. If recording was saved but transcription failed, the entry remains marked as needing transcription. Other recoverable work is retained where possible, without being labelled successfully saved.
+**Failure/cancellation:** Existing entries are unchanged. Confirmed cancellation removes unfinished work only. Saved audio with failed transcription stays pending; other recoverable work is retained without claiming success.
 
 ## 6. Extension Points
 
-None defined for this version. **Transcribe audio entry** is mandatory included behaviour on the successful flow, not an extension. **Receive language feedback** is a separate user goal and does not have to occur for this use case to succeed.
+None. Transcription is mandatory included behaviour on success. Feedback is a separate user goal.

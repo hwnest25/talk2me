@@ -1,264 +1,145 @@
-# Talk2Me: Software Requirements Specification
+# Talk2Me — Software Requirements Specification
 
-## Version History
-
-| Version | Date | Author | Changes |
-| ------- | ---- | ------ | ------- |
-| 1.0 | October 2026 | Hope, Rodrigo | Initial SRS: vision, UCD, non-functional requirements |
-
----
-
-## Table of Contents
-- [Table of Contents](#table-of-contents)
-- [Introduction](#1-introduction)
-    - [Purpose](#11-purpose)
-    - [Scope](#12-scope)
-    - [Definitions, Acronyms and Abbreviations](#13-definitions-acronyms-and-abbreviations)
-    - [References](#14-references)
-    - [Overview](#15-overview)
-- [Overall Description](#2-overall-description)
-    - [Vision](#21-vision)
-    - [Use Case Diagram](#22-use-case-diagram)
-    - [Technology Stack](#23-technology-stack)
-- [Specific Requirements](#3-specific-requirements)
-    - [Functionality](#31-functionality)
-    - [Usability](#32-usability)
-    - [Reliability](#33-reliability)
-    - [Performance](#34-performance)
-    - [Supportability](#35-supportability)
-    - [Design Constraints](#36-design-constraints)
-    - [Online User Documentation and Help System Requirements](#37-online-user-documentation-and-help-system-requirements)
-    - [Purchased Components](#38-purchased-components)
-    - [Interfaces](#39-interfaces)
-    - [Licensing Requirements](#310-licensing-requirements)
-    - [Legal, Copyright and Other Notices](#311-legal-copyright-and-other-notices)
-    - [Applicable Standards](#312-applicable-standards)
-- [Supporting Information](#4-supporting-information)
-
----
+Concise draft · 11 November 2026 · Team: Hope and Rodrigo. Git records revision history. Requirements below describe intended behaviour, not implemented or measured results.
 
 ## 1. Introduction
 
 ### 1.1 Purpose
-This Software Requirements Specification (SRS) describes all specifications for the application "Talk2Me". It includes an overview of the project and its vision, the use case diagram covering the full product scope, and the non-functional requirements and constraints that govern development. Functional requirements detail for individual use cases will be documented separately in linked use case files as development progresses.
+
+Define Talk2Me's scope, functional goals, quality requirements and constraints. Detailed interaction flows belong in the linked use cases.
 
 ### 1.2 Scope
-Talk2Me is a cross-platform mobile application (iOS and Android) that helps language learners build spoken fluency through a daily journaling habit. The learner records a short spoken entry in their target language, receives structured AI-powered feedback on grammar and vocabulary, and builds a personalised learner profile that improves with every session.
 
-Actors of this application:
-- **Learner:** The primary user. Records entries, receives feedback, tracks progress.
+An iOS/Android app helps a **Learner** practise speaking through daily journals of 30 seconds to two minutes. It records and transcribes audio on-device, then sends text and a compact profile summary for AI grammar/vocabulary feedback. Audio stays local.
 
-Planned subsystems:
+The broader vision includes personalisation, vocabulary practice, prompts and progress tracking. Professional domain tracks, enterprise use, pronunciation analysis and cross-device sync are later work.
 
-- **Recording and Transcription:** The learner records a spoken journal entry. Audio is transcribed on-device using OpenAI Whisper. No audio leaves the device at any point.
-- **AI Feedback Engine:** The transcript and a compact learner profile summary are sent to the backend, which calls the Anthropic Claude API and returns structured feedback on grammar errors, vocabulary suggestions, and register assessment.
-- **Learner Profile:** A locally stored profile (SQLite) that accumulates error patterns, vocabulary gaps, fluency scores, and session history. Used to personalise feedback over time.
-- **Daily Vocabulary List:** A generated list of vocabulary items drawn from the learner's own errors and level-appropriate progression, surfaced each session.
-- **Prompt Suggestions:** A set of speaking prompts offered to the learner at the start of each session to reduce friction.
-- **Streak and Progress Tracking:** Session streaks and basic progress indicators to support habit formation.
+### 1.3 Terms
 
-### 1.3 Definitions, Acronyms and Abbreviations
-
-| Abbreviation | Explanation |
-| ------------ | ----------- |
-| SRS | Software Requirements Specification |
-| UC | Use Case |
-| UCD | Overall Use Case Diagram |
-| n/a | Not applicable |
-| tbd | To be determined |
-| STT | Speech-to-Text |
-| API | Application Programming Interface |
-| SQLite | Lightweight relational database for on-device storage |
-| PRD | Product Requirements Document |
-| MVP | Minimum Viable Product |
+**SRS:** Software Requirements Specification; **UC:** use case; **UCD:** use-case diagram; **STT:** speech-to-text; **MVP:** minimum viable product; **PRD:** product requirements document.
 
 ### 1.4 References
 
-| Title | Date | Publishing Organisation |
-| ----- |:----:| ----------------------- |
-| [Talk2Me Blog](https://talk2me4.wordpress.com) | October 2026 | Talk2Me Team |
-| [Talk2Me GitHub Repository](https://github.com/hwnest25/talk2me) | October 2026 | Talk2Me Team |
-| [Anthropic Claude API Documentation](https://docs.anthropic.com) | 2026 | Anthropic |
-| [OpenAI Whisper](https://github.com/openai/whisper) | 2026 | OpenAI |
+[Repository](https://github.com/hwnest25/talk2me) · [Blog](https://talk2me4.wordpress.com) · [Whisper](https://github.com/openai/whisper) · [Claude documentation](https://docs.anthropic.com)
 
 ### 1.5 Overview
-The following chapter provides an overall description of the project including the product vision and the Overall Use Case Diagram. Chapter 3 specifies non-functional requirements covering usability, reliability, performance, supportability, and design constraints. Chapter 4 provides supporting information.
 
----
+Section 2 describes the product and stack; section 3 defines requirements; section 4 lists unresolved decisions.
 
 ## 2. Overall Description
 
 ### 2.1 Vision
-Speaking is the hardest language skill to practice and the most neglected. Most apps focus on reading, listening, and vocabulary drills. Consistent speaking practice has traditionally required a human tutor, which is expensive and hard to schedule. The result: most learners avoid it entirely, which is why they plateau.
 
-Talk2Me addresses this with a simple daily habit. The learner speaks for 30 seconds to 2 minutes in their target language, receives structured AI feedback on grammar, vocabulary, and register, and builds a personalised error profile that makes every session smarter than the last. Audio never leaves the device. Only the text transcript and a compact learner profile summary are transmitted for analysis.
+Make short, frequent speaking practice accessible without arranging a tutor. Build a local learner profile from error patterns, vocabulary gaps, fluency scores and session history, and use it to personalise later feedback.
 
-The full vision includes professional domain tracks (medicine, law, aviation), cross-device sync, pronunciation analysis, and enterprise features for institutional learners. Phase 1 focuses on validating the core loop with individual learners.
+“Phase 1/2” below means **product delivery scope**, not the RUP phases Inception/Elaboration/Construction/Transition used in YouTrack.
 
 ### 2.2 Use Case Diagram
 
-<img src="diagrams/use_case_diagram.png" alt="Overall Use Case Diagram" width="700"/>
+![Overall use case diagram](diagrams/use_case_diagram.png)
 
-- **Blue:** Planned for Phase 1
-- **Purple:** Planned for Phase 2
+Blue: product Phase 1. Purple: product Phase 2.
 
 ### 2.3 Technology Stack
 
-**Mobile Frontend:**
-- Flutter (Dart): cross-platform iOS and Android from a single codebase
-
-**Speech-to-Text:**
-- OpenAI Whisper (on-device, tiny/base model): no audio egress
-
-**AI Feedback:**
-- Anthropic Claude API: structured grammar, vocabulary, and register feedback
-
-**Local Storage:**
-- SQLite: learner profile, entry history, error patterns stored on-device
-
-**Backend API:**
-- Python / FastAPI: thin stateless layer handling Claude integration and prompt delivery
-
-**Cloud Infrastructure:**
-- TBD (Railway or Render for Phase 1)
-
-**Project Management:**
-- YouTrack
-- GitHub
-- draw.io (UML diagrams)
-
----
+| Component | Planned choice |
+| --- | --- |
+| Mobile | Flutter / Dart |
+| Transcription | On-device Whisper tiny/base |
+| Local data | SQLite: entries, profile and history |
+| Feedback | Anthropic Claude API |
+| Backend | Python / FastAPI; stateless where possible |
+| Hosting | Undecided: Railway or Render considered |
+| Collaboration | YouTrack, GitHub and draw.io |
 
 ## 3. Specific Requirements
 
 ### 3.1 Functionality
-This section lists the use cases visible in the Overall Use Case Diagram. Functional requirement detail for each use case will be added in linked use case documents as implementation progresses.
 
-**Phase 1 (planned for implementation):**
-- 3.1.1 [Onboard and set up profile](use_cases/UC-O01_SetUpLearnerProfile.md) ⭐
-- 3.1.2 [Record spoken journal entry](use_cases/UC-J01_RecordSpokenJournalEntry.md) ⭐
-- 3.1.3 Transcribe audio entry *(included in 3.1.2)* ⭐
-- 3.1.4 [Receive grammar feedback](use_cases/UC-F01_ReceiveLanguageFeedback.md) ⭐
-- 3.1.5 [Receive vocabulary feedback](use_cases/UC-F01_ReceiveLanguageFeedback.md) ⭐
-- 3.1.6 View entry history
-- 3.1.7 View learner profile
-- 3.1.8 Review daily vocabulary list
-- 3.1.9 View entry streak
-- 3.1.10 Select speaking prompt
-- 3.1.11 Select target language
+| ID | User goal | Delivery scope / specification |
+| --- | --- | --- |
+| 3.1.1 | Onboard and set up profile | December — [UC-O01](use_cases/UC-O01_SetUpLearnerProfile.md) |
+| 3.1.2 | Record spoken journal entry | December — [UC-J01](use_cases/UC-J01_RecordSpokenJournalEntry.md) |
+| 3.1.3 | Transcribe audio entry | December — included in UC-J01 |
+| 3.1.4 | Receive grammar feedback | December — [UC-F01](use_cases/UC-F01_ReceiveLanguageFeedback.md) |
+| 3.1.5 | Receive vocabulary feedback | December — UC-F01 |
+| 3.1.6 | View entry history | Wider product Phase 1 |
+| 3.1.7 | View learner profile | Wider product Phase 1 |
+| 3.1.8 | Review daily vocabulary drawn from the learner's errors and level progression, shown each session | Wider product Phase 1 |
+| 3.1.9 | View entry streak | Wider product Phase 1 |
+| 3.1.10 | Select a speaking prompt at the start of a session | Wider product Phase 1 |
+| 3.1.11 | Select target language | Wider product Phase 1 |
+| 3.1.12 | Sync profile across devices | Product Phase 2 |
+| 3.1.13 | Set learning goals | Product Phase 2 |
+| 3.1.14 | Configure feedback detail level | Product Phase 2 |
+| 3.1.15 | Receive pronunciation feedback | Product Phase 2 |
 
-*⭐ Scoped for December delivery*
-
-**Phase 2 (deferred):**
-- 3.1.12 Sync learner profile across devices
-- 3.1.13 Set learning goals
-- 3.1.14 Configure feedback detail level
-- 3.1.15 Receive pronunciation feedback
+The three detailed UCs contain mockups, activity diagrams and links to Gherkin narratives. Their registered steps remain pending application integration.
 
 ### 3.2 Usability
 
-#### 3.2.1 Minimal friction to first session
-A new user must be able to complete onboarding and record their first entry within 2 minutes of installing the app, without requiring any external account creation.
-
-#### 3.2.2 Accessible feedback presentation
-AI feedback must be presented in plain language without linguistic jargon. Grammar corrections must show the original phrasing alongside the corrected version.
-
-#### 3.2.3 Short minimum entry time
-The minimum recording length is 30 seconds. The interface must not discourage short entries; the habit must feel achievable daily.
+- **3.2.1:** Complete onboarding and a first recording within two minutes of installation, without external account creation.
+- **3.2.2:** Explain feedback in plain language; show original wording alongside grammar corrections.
+- **3.2.3:** Minimum completed recording: 30 seconds. Make short entries feel achievable.
 
 ### 3.3 Reliability
 
-#### 3.3.1 Offline core functionality
-Recording, transcription, and local storage must function fully offline. AI feedback requires a network connection but the app must not crash or lose data if the connection is unavailable.
-
-#### 3.3.2 Data integrity
-No entry data, learner profile, or vocabulary history may be lost due to app crashes or unexpected termination. All writes to SQLite must be transactional.
+- **3.3.1:** Recording, transcription and local storage work offline. Network loss during AI feedback must not crash the app or lose data.
+- **3.3.2:** Preserve entries, profile and vocabulary history through crashes/termination; use transactional SQLite writes. Recovery limits require testing.
 
 ### 3.4 Performance
 
-#### 3.4.1 Transcription latency
-On-device Whisper transcription of a 2-minute entry must complete within 10 seconds on a 2022 or later device.
+- **3.4.1:** Transcribe a two-minute recording within 10 seconds on a 2022-or-later device.
+- **3.4.2:** Display feedback within eight seconds of transcript submission under normal network conditions.
+- **3.4.3:** Combined app/model footprint: at most 200 MB for product Phase 1.
 
-#### 3.4.2 Feedback response time
-End-to-end feedback (transcript submission to result displayed) must complete within 8 seconds under normal network conditions.
-
-#### 3.4.3 Storage footprint
-The Whisper model and app combined must not exceed 200 MB of device storage for Phase 1.
+These are inherited targets, not benchmark results.
 
 ### 3.5 Supportability
 
-#### 3.5.1 Coding standards
-All Dart/Flutter code must follow the official Dart style guide. All Python backend code must follow PEP 8. Variable and function names must be descriptive and consistent with domain vocabulary.
-
-#### 3.5.2 Testing strategy
-Core use cases (recording, transcription, feedback) must have unit tests. The learner profile update logic must have integration tests. UI testing is deferred to Phase 2.
-
-#### 3.5.3 Version control
-All code and documentation must be committed to GitHub with meaningful commit messages. Documentation must not be duplicated across files; the DRY principle applies to documentation as well as code.
+- **3.5.1:** Follow the Dart style guide and PEP 8; use clear domain-based names.
+- **3.5.2:** Unit-test recording, transcription and feedback; integration-test profile updates. UI testing is deferred to product Phase 2.
+- **3.5.3:** Version code and documentation in GitHub with meaningful commits. Keep one authoritative source for each piece of documentation.
 
 ### 3.6 Design Constraints
 
-#### 3.6.1 Privacy constraint
-Audio must never leave the device. This is a hard architectural constraint, not a policy. The transcription layer must be implemented on-device. Any future cloud STT option must require explicit user opt-in.
+- **3.6.1:** Audio never leaves the device in the current scope. Any future cloud STT option would require explicit opt-in and a separately reviewed scope change.
+- **3.6.2:** Flutter frontend; iOS 15+ and Android 10+.
+- **3.6.3:** The device is the source of truth for profile data. Keep the backend stateless where possible; opt-in server-side sync is deferred.
 
-#### 3.6.2 Platform constraint
-Phase 1 targets iOS 15+ and Android 10+. Flutter is the mandated framework for the mobile frontend.
+### 3.7 User Help
 
-#### 3.6.3 Architecture constraint
-The backend must be stateless where possible. The device holds the source of truth for the learner profile. Server-side storage of profile data is deferred to Phase 2 opt-in sync.
+Product Phase 1 has self-explanatory onboarding; an in-app help section is deferred to Phase 2.
 
-### 3.7 Online User Documentation and Help System Requirements
-Phase 1 will not include in-app documentation. Onboarding screens must be self-explanatory. A help section is deferred to Phase 2.
+### 3.8 Components
 
-### 3.8 Purchased Components
-No purchased components at this stage. The following third-party services are used under free or pay-per-use models:
-- Anthropic Claude API (pay-per-token)
-- OpenAI Whisper (open source, on-device)
+No purchased components are currently specified. Whisper is open source; Claude is a pay-per-use service.
 
 ### 3.9 Interfaces
 
-#### 3.9.1 User Interfaces
-- **Onboarding screens:** language selection, level self-assessment, goal setting, privacy notice informing the learner that transcripts are transmitted for feedback but never stored, and advising them not to include sensitive personal information in their entries
-- **Home / record screen:** primary entry point, prompt display, record button, streak indicator
-- **Feedback screen:** grammar corrections, vocabulary suggestions, register note, fluency score
-- **Entry history screen:** list of past entries with dates and scores
-- **Learner profile screen:** error patterns, vocabulary progress, cumulative stats
-- **Daily vocabulary screen:** vocabulary items drawn from errors and level progression
-- **Settings screen:** target language, notification preferences
+- **3.9.1 UI:** Onboarding (language, level, privacy notice); record/home (prompt, record, streak); feedback (grammar, vocabulary, register, fluency); entry history; profile; daily vocabulary; settings (language, notifications). The original onboarding list also included goals: see the scope conflict below.
+- **3.9.2 Hardware:** Microphone and local storage for SQLite/model files.
+- **3.9.3 Software:** Whisper maps local audio to text. Claude receives transcript/profile summary and returns structured JSON feedback.
+- **3.9.4 Communication:** HTTPS for backend calls; no audio transmission.
 
-#### 3.9.2 Hardware Interfaces
-- Device microphone (required for recording)
-- Local storage (required for SQLite and Whisper model)
+### 3.10 Licensing
 
-#### 3.9.3 Software Interfaces
-- Anthropic Claude API: receives transcript and learner profile summary; returns structured JSON feedback
-- OpenAI Whisper (on-device): receives audio file; returns text transcript
+Licensing requirements remain to be decided.
 
-#### 3.9.4 Communication Interfaces
-- HTTPS for all backend communication
-- No audio transmitted over any network interface
+### 3.11 Privacy and Notices
 
-### 3.10 Licensing Requirements
-tbd
+Audio remains exclusively on-device. The Talk2Me backend must process submitted transcripts only for feedback, without logging or retaining them, then discard them. Onboarding explains this flow and advises learners not to include sensitive personal information. External-provider retention settings must be checked before deployment.
 
-### 3.11 Legal, Copyright and Other Notices
-User audio recordings remain exclusively on the user's device and are never transmitted or stored externally. The text transcript is transmitted to the backend solely for AI feedback processing; it is not logged, stored, or retained server-side and is discarded immediately after the feedback response is returned.
+The app must offer full data deletion at any time. GDPR compliance remains a product requirement, not a verified claim.
 
-Talk2Me operates a shared responsibility model for transcript privacy. The app is responsible for ensuring transcripts are transmitted securely, processed ephemerally, and never retained. The learner is responsible for not including sensitive personal information in their spoken entries. This expectation is surfaced during onboarding.
+### 3.12 Standards
 
-Full data deletion must be available to the user at any time in compliance with GDPR.
+Dart style guide, PEP 8, UML 2.x and GDPR requirements for data handling/erasure.
 
-### 3.12 Applicable Standards
-- Dart style guide (Flutter development)
-- PEP 8 (Python backend)
-- UML 2.x (use case diagrams)
-- GDPR (data handling and right to erasure)
+## 4. Open Decisions
 
----
-
-## 4. Supporting Information
-For further information, visit the [Talk2Me Blog](https://talk2me4.wordpress.com) or contact the team via the repository.
-
-The team:
-- Hope
-- Rodrigo
+- Confirm initial supported languages and level choices, including **Not sure**.
+- The SRS assigns learning goals to Phase 2 but originally mentions them in onboarding. UC-O01 currently defers them.
+- Confirm UC-J01's proposed two-minute automatic stop and UC-F01's explicit feedback request.
+- Align the overall diagram's separate grammar/vocabulary goals with the combined UC-F01; the December mockup also omits register/fluency scores shown in the broader UI list.
+- Check on-device performance, model footprint, crash recovery and provider retention before claiming the targets are met.

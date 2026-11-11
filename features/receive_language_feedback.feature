@@ -1,4 +1,4 @@
-# Specification: docs/UCs/UC-F01_ReceiveLanguageFeedback.md
+# Specification: docs/use_cases/UC-F01_ReceiveLanguageFeedback.md
 @UC-F01
 Feature: Receive language feedback
   As a learner who has completed local onboarding

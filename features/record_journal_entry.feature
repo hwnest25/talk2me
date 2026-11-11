@@ -1,4 +1,4 @@
-# Specification: docs/UCs/UC-J01_RecordSpokenJournalEntry.md
+# Specification: docs/use_cases/UC-J01_RecordSpokenJournalEntry.md
 @UC-J01
 Feature: Record a spoken journal entry
   As a learner who has completed local onboarding

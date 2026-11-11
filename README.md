@@ -1,66 +1,39 @@
 # Talk2Me
 
-A mobile app that helps language learners build spoken fluency through a simple daily habit. Record a short spoken journal entry in your target language, receive AI-powered feedback on grammar and vocabulary, and build a personalised learner profile that improves with every session.
+A mobile spoken-language journal: record an entry, transcribe it on-device, and request grammar and vocabulary feedback. Audio stays on the device; feedback uses the transcript and a compact learner-profile summary.
 
-## Team
+**Team:** Hope — development, process and design; Rodrigo — development, testing and user research.
 
-| Name | Role |
-| ---- | ---- |
-| Hope | Software Developer / Process Engineer / Designer |
-| Rodrigo | Software Developer / Test Manager / User Researcher |
+[Blog](https://talk2me4.wordpress.com) · [YouTrack](https://talk2me.youtrack.cloud)
 
-Blog: [talk2me4.wordpress.com](https://talk2me4.wordpress.com)
+## Current status
 
-## Tech Stack
+Elaboration. This repository contains requirements, diagrams and 16 acceptance scenarios. The Cucumber step definitions are **pending**; they do not yet test a running Talk2Me app.
 
-| Layer | Technology |
-| ----- | ---------- |
-| Mobile | Flutter (Dart) |
-| Speech-to-Text | OpenAI Whisper (on-device) |
-| AI Feedback | Anthropic Claude API |
-| Local Storage | SQLite |
-| Backend API | Python / FastAPI |
-| Cloud | TBD (Railway / Render) |
+## Start reading
 
-## Project Status
+- [Software Requirements Specification](docs/SoftwareRequirementSpecification.md): scope, constraints and open decisions.
+- [UC-O01 — Set up a learner profile](docs/use_cases/UC-O01_SetUpLearnerProfile.md).
+- [UC-J01 — Record a spoken journal entry](docs/use_cases/UC-J01_RecordSpokenJournalEntry.md).
+- [UC-F01 — Receive language feedback](docs/use_cases/UC-F01_ReceiveLanguageFeedback.md).
+- [Scenario coverage](docs/acceptance-specifications/Scenario_Mapping.md) and [step-definition guide](docs/acceptance-specifications/Step_Inventory.md).
 
-Currently in the **Elaboration phase** (Week 5). Use case specifications and acceptance scenarios are complete. All step definitions are pending connection to the real application.
+Each use case includes its mockup, activity diagram and link to the Gherkin source. Editable diagrams are beside their exports.
 
-Phase 1 targets the core record-transcribe-feedback loop. Phase 2 adds personalisation, multi-language support, and cross-device sync.
+## Planned stack
 
-## Repository Structure
+Flutter/Dart mobile app, on-device Whisper, SQLite, and a Python/FastAPI backend calling Anthropic Claude. Hosting remains undecided. Cucumber.js is the acceptance-authoring scaffold, separate from the application stack.
 
-```
-talk2me/
-  features/                         Gherkin feature files (one per use case)
-    step_definitions/               Shared step definitions (all pending)
-  scripts/
-    check-features.cjs              Validates feature files against scenario map
-  docs/
-    use_cases/                      Use case specifications (UC-O01, UC-J01, UC-F01)
-      assets/                       Activity diagrams and mockups
-    acceptance-specifications/      Scenario mapping, step inventory, scenario-map.json
-    diagrams/                       Use case diagram source and exports
-  cucumber.cjs                      Cucumber configuration
-  package.json                      npm scripts: bdd, bdd:dry-run, check
-```
+## Check the acceptance specifications
 
-## Running the Acceptance Scenarios
+Use a Node version supported by [package.json](package.json).
 
 ```bash
-npm install
-npm run bdd:dry-run   # parse and list all scenarios without executing
-npm run bdd           # run all scenarios (all pending until app is connected)
-npm run check         # validate feature files against the scenario map
+npm ci
+npm run check
+npm run bdd:dry-run
 ```
 
-## Documentation
+These commands check syntax, scenario mapping and step matching. `npm run bdd` executes the pending scaffold; a dry run is not proof of working application behaviour.
 
-- [Software Requirements Specification](./docs/SoftwareRequirementsSpecification.md)
-- [Use Case: Set Up a Learner Profile](./docs/use_cases/UC-O01_SetUpLearnerProfile.md)
-- [Use Case: Record a Spoken Journal Entry](./docs/use_cases/UC-J01_RecordSpokenJournalEntry.md)
-- [Use Case: Receive Language Feedback](./docs/use_cases/UC-F01_ReceiveLanguageFeedback.md)
-
-## Overall Use Case Diagram
-
-![Overall Use Case Diagram](docs/diagrams/use_case_diagram.png)
+![Overall use case diagram](docs/diagrams/use_case_diagram.png)
