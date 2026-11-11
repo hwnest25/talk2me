@@ -6,5 +6,7 @@
     "editor.tabSize": 2,
     "editor.insertSpaces": true
   },
-  "files.associations": { "*.feature": "cucumber" }
+  "files.associations": { "*.feature": "cucumber" },
+  "git.useCommitInputAsStdin": true,
+  "git.showCommitInput": true
 }
