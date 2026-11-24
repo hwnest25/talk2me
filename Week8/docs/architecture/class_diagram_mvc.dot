@@ -1,0 +1,164 @@
+// Talk2Me — planned class diagram of the Flutter app, with MVC sections marked.
+// Planned design (no application code exists yet). Render: dot -Tpng -Gdpi=150 class_diagram_mvc.dot -o class_diagram_mvc.png
+digraph Talk2MeClasses {
+  graph [fontname="DejaVu Sans", fontsize=12, rankdir=TB, compound=true, bgcolor="white", pad=0.3, nodesep=0.45, ranksep=0.75, newrank=true,
+         label=<<b>Talk2Me — class diagram (planned)</b><br/><font point-size="10">Flutter MVVM with ChangeNotifier view models, read as MVC · December scope: UC-O01, UC-J01, UC-F01</font>>,
+         labelloc=t, labeljust=l];
+  node  [fontname="DejaVu Sans", fontsize=10, shape=plain];
+  edge  [fontname="DejaVu Sans", fontsize=9, color="#333333", arrowsize=0.8];
+
+  // ---------------- VIEW ----------------
+  subgraph cluster_view {
+    label=<<b>VIEW</b>  ·  Flutter widgets (lib/ui/&lt;feature&gt;/widgets)>; labeljust=l;
+    style="filled,rounded"; fillcolor="#e8f1fb"; color="#3b78c3"; penwidth=2;
+
+    OnboardingScreen [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+      <tr><td><font point-size="8">«StatelessWidget»</font><br/><b>OnboardingScreen</b></td></tr>
+      <tr><td align="left" balign="left">- viewModel : OnboardingViewModel</td></tr>
+      <tr><td align="left" balign="left">+ build(context) : Widget</td></tr></table>>];
+
+    JournalScreen [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+      <tr><td><font point-size="8">«StatelessWidget»</font><br/><b>JournalScreen</b></td></tr>
+      <tr><td align="left" balign="left">- viewModel : RecordingViewModel</td></tr>
+      <tr><td align="left" balign="left">+ build(context) : Widget</td></tr></table>>];
+
+    FeedbackScreen [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+      <tr><td><font point-size="8">«StatelessWidget»</font><br/><b>FeedbackScreen</b></td></tr>
+      <tr><td align="left" balign="left">- viewModel : FeedbackViewModel</td></tr>
+      <tr><td align="left" balign="left">+ build(context) : Widget</td></tr></table>>];
+  }
+
+  // ---------------- CONTROLLER ----------------
+  subgraph cluster_controller {
+    label=<<b>CONTROLLER</b>  ·  view models (lib/ui/&lt;feature&gt;/view_models)>; labeljust=l;
+    style="filled,rounded"; fillcolor="#fdf3e1"; color="#c98a1b"; penwidth=2;
+
+    ChangeNotifier [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+      <tr><td><font point-size="8">«Flutter SDK»</font><br/><b><i>ChangeNotifier</i></b></td></tr>
+      <tr><td align="left" balign="left">+ addListener(listener)<br/># notifyListeners()</td></tr></table>>];
+
+    OnboardingViewModel [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+      <tr><td><b>OnboardingViewModel</b></td></tr>
+      <tr><td align="left" balign="left">- language : Language?<br/>- level : ProficiencyLevel?<br/>- isSaving : bool<br/>- error : String?</td></tr>
+      <tr><td align="left" balign="left">+ selectLanguage(language)<br/>+ selectLevel(level)<br/>+ finishSetup() : Future&lt;void&gt;</td></tr></table>>];
+
+    RecordingViewModel [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+      <tr><td><b>RecordingViewModel</b></td></tr>
+      <tr><td align="left" balign="left">- state : RecordingState<br/>- elapsed : Duration<br/>- entry : JournalEntry?</td></tr>
+      <tr><td align="left" balign="left">+ startRecording() : Future&lt;void&gt;<br/>+ stopAndSave() : Future&lt;void&gt;<br/>+ retryTranscription() : Future&lt;void&gt;<br/>+ play()</td></tr></table>>];
+
+    FeedbackViewModel [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+      <tr><td><b>FeedbackViewModel</b></td></tr>
+      <tr><td align="left" balign="left">- state : FeedbackState<br/>- feedback : Feedback?</td></tr>
+      <tr><td align="left" balign="left">+ load(entryId : int) : Future&lt;void&gt;<br/>+ requestFeedback() : Future&lt;void&gt;<br/>+ retrySave() : Future&lt;void&gt;</td></tr></table>>];
+  }
+
+  // ---------------- MODEL ----------------
+  subgraph cluster_model {
+    label=<<b>MODEL</b>  ·  repositories, services, data (lib/data, lib/domain)>; labeljust=l;
+    style="filled,rounded"; fillcolor="#e6f4ea"; color="#3a8f55"; penwidth=2;
+
+    subgraph cluster_repos {
+      label="Repositories (single source of truth)"; labeljust=l; style="dashed"; color="#3a8f55"; fontsize=10;
+
+      ProfileRepository [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+        <tr><td><b>ProfileRepository</b></td></tr>
+        <tr><td align="left" balign="left">+ getProfile() : Future&lt;LearnerProfile?&gt;<br/>+ createProfile(language, level) : Future&lt;LearnerProfile&gt;<br/>+ compactSummary() : Future&lt;ProfileSummary&gt;<br/>+ applyLearningPatterns(feedback) : Future&lt;void&gt;</td></tr></table>>];
+
+      JournalRepository [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+        <tr><td><b>JournalRepository</b></td></tr>
+        <tr><td align="left" balign="left">+ createEntry(audio, duration) : Future&lt;JournalEntry&gt;<br/>+ attachTranscript(entryId, text) : Future&lt;void&gt;<br/>+ getEntry(id) : Future&lt;JournalEntry?&gt;</td></tr></table>>];
+
+      FeedbackRepository [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+        <tr><td><b>FeedbackRepository</b></td></tr>
+        <tr><td align="left" balign="left">+ getSaved(entryId) : Future&lt;Feedback?&gt;<br/>+ requestAndSave(entry, summary) : Future&lt;Feedback&gt;</td></tr></table>>];
+    }
+
+    subgraph cluster_services {
+      label="Services (wrap one external resource each)"; labeljust=l; style="dashed"; color="#3a8f55"; fontsize=10;
+
+      AudioRecorderService [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+        <tr><td><b>AudioRecorderService</b></td></tr>
+        <tr><td align="left" balign="left">+ hasPermission() : Future&lt;bool&gt;<br/>+ start() : Future&lt;void&gt;<br/>+ stop() : Future&lt;AudioFile&gt;</td></tr></table>>];
+
+      TranscriptionService [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+        <tr><td><font point-size="8">on-device Whisper</font><br/><b>TranscriptionService</b></td></tr>
+        <tr><td align="left" balign="left">+ isModelReady() : Future&lt;bool&gt;<br/>+ transcribe(audio) : Future&lt;String&gt;</td></tr></table>>];
+
+      FeedbackApiClient [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+        <tr><td><font point-size="8">HTTPS → FastAPI backend</font><br/><b>FeedbackApiClient</b></td></tr>
+        <tr><td align="left" balign="left">+ analyse(transcript, summary) : Future&lt;FeedbackDto&gt;</td></tr></table>>];
+
+      AppDatabase [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+        <tr><td><font point-size="8">«drift database» SQLite</font><br/><b>AppDatabase</b></td></tr>
+        <tr><td align="left" balign="left">learnerProfiles, journalEntries, feedbackResults,<br/>suggestions, learningPatterns (tables)</td></tr>
+        <tr><td align="left" balign="left">+ transaction(action) : Future&lt;T&gt;</td></tr></table>>];
+    }
+
+    subgraph cluster_domain {
+      label="Domain models (immutable data classes)"; labeljust=l; style="dashed"; color="#3a8f55"; fontsize=10;
+
+      LearnerProfile [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+        <tr><td><b>LearnerProfile</b></td></tr>
+        <tr><td align="left" balign="left">+ id : int<br/>+ targetLanguage : Language<br/>+ level : ProficiencyLevel?<br/>+ setupCompletedAt : DateTime</td></tr></table>>];
+
+      JournalEntry [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+        <tr><td><b>JournalEntry</b></td></tr>
+        <tr><td align="left" balign="left">+ id : int<br/>+ createdAt : DateTime<br/>+ duration : Duration<br/>+ audioPath : String<br/>+ transcript : String?<br/>+ transcriptionStatus : TranscriptionStatus</td></tr></table>>];
+
+      Feedback [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+        <tr><td><b>Feedback</b></td></tr>
+        <tr><td align="left" balign="left">+ id : int<br/>+ entryId : int<br/>+ createdAt : DateTime</td></tr></table>>];
+
+      Suggestion [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+        <tr><td><b>Suggestion</b></td></tr>
+        <tr><td align="left" balign="left">+ category : SuggestionCategory<br/>+ original : String<br/>+ suggested : String<br/>+ explanation : String</td></tr></table>>];
+    }
+  }
+
+  // ---- View observes Controller (association, navigable towards the view model)
+  OnboardingScreen -> OnboardingViewModel [arrowhead=vee, label="observes"];
+  JournalScreen    -> RecordingViewModel  [arrowhead=vee, label="observes"];
+  FeedbackScreen   -> FeedbackViewModel   [arrowhead=vee, label="observes"];
+
+  // ---- Generalisation: view models extend ChangeNotifier
+  OnboardingViewModel -> ChangeNotifier [arrowhead=onormal, arrowsize=1.1, constraint=false];
+  RecordingViewModel  -> ChangeNotifier [arrowhead=onormal, arrowsize=1.1, constraint=false];
+  FeedbackViewModel   -> ChangeNotifier [arrowhead=onormal, arrowsize=1.1, constraint=false];
+
+  // ---- Controller uses Model (dependency)
+  OnboardingViewModel -> ProfileRepository  [style=dashed, arrowhead=vee];
+  RecordingViewModel  -> JournalRepository  [style=dashed, arrowhead=vee];
+  FeedbackViewModel   -> FeedbackRepository [style=dashed, arrowhead=vee];
+  FeedbackViewModel   -> ProfileRepository  [style=dashed, arrowhead=vee];
+
+  // ---- Repositories use services
+  ProfileRepository  -> AppDatabase          [style=dashed, arrowhead=vee];
+  JournalRepository  -> AudioRecorderService [style=dashed, arrowhead=vee];
+  JournalRepository  -> TranscriptionService [style=dashed, arrowhead=vee];
+  JournalRepository  -> AppDatabase          [style=dashed, arrowhead=vee];
+  FeedbackRepository -> FeedbackApiClient    [style=dashed, arrowhead=vee];
+  FeedbackRepository -> AppDatabase          [style=dashed, arrowhead=vee];
+
+  // ---- Repositories create and return domain models (one compound edge for readability)
+  FeedbackRepository -> Feedback [style=dashed, arrowhead=vee, ltail=cluster_repos, lhead=cluster_domain, label="  «create» / return"];
+
+  // ---- Domain associations
+  LearnerProfile -> JournalEntry [dir=both, arrowtail=none, arrowhead=none, taillabel="1", headlabel="0..*", label="writes"];
+  JournalEntry   -> Feedback     [dir=both, arrowtail=none, arrowhead=none, taillabel="1", headlabel="0..1", label="has"];
+  Feedback       -> Suggestion   [dir=both, arrowtail=diamond, arrowhead=none, taillabel="1", headlabel="0..*", label="grammar / vocabulary"];
+
+  { rank=same; OnboardingScreen; JournalScreen; FeedbackScreen; }
+  { rank=same; OnboardingViewModel; RecordingViewModel; FeedbackViewModel; ChangeNotifier; }
+  { rank=same; ProfileRepository; JournalRepository; FeedbackRepository; }
+  { rank=same; AudioRecorderService; TranscriptionService; AppDatabase; FeedbackApiClient; }
+  { rank=same; LearnerProfile; JournalEntry; Feedback; Suggestion; }
+  // keep left-to-right order inside rows
+  OnboardingScreen -> JournalScreen -> FeedbackScreen [style=invis];
+  OnboardingViewModel -> RecordingViewModel -> FeedbackViewModel -> ChangeNotifier [style=invis];
+  ProfileRepository -> JournalRepository -> FeedbackRepository [style=invis];
+  AudioRecorderService -> TranscriptionService -> AppDatabase -> FeedbackApiClient [style=invis];
+  LearnerProfile -> JournalEntry -> Feedback -> Suggestion [style=invis];
+  // stack the rows
+  FeedbackApiClient -> Feedback [style=invis];
+}

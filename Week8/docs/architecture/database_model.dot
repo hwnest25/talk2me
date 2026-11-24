@@ -1,0 +1,65 @@
+// Talk2Me — local database model (SAD 9), SQLite via drift.
+// Proposed schema (no application code exists yet). Render: dot -Tpng -Gdpi=150 database_model.dot -o database_model.png
+digraph Talk2MeDatabase {
+  graph [fontname="DejaVu Sans", fontsize=12, rankdir=LR, bgcolor="white", pad=0.3, nodesep=0.6, ranksep=1.1,
+         label=<<b>Talk2Me — local database model (proposed)</b><br/><font point-size="10">SQLite on the device, defined as drift tables · PK = primary key · FK = foreign key · crow's foot = many</font>>,
+         labelloc=t, labeljust=l];
+  node  [fontname="DejaVu Sans", fontsize=10, shape=plain];
+  edge  [fontname="DejaVu Sans", fontsize=9, color="#333333", dir=both];
+
+  learner_profiles [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+    <tr><td colspan="2" bgcolor="#e6f4ea"><b>learner_profiles</b></td></tr>
+    <tr><td align="left"><b>PK</b> id</td><td align="left" port="id">INTEGER</td></tr>
+    <tr><td align="left">target_language</td><td align="left">TEXT</td></tr>
+    <tr><td align="left">level</td><td align="left">TEXT NULL (NULL = not sure)</td></tr>
+    <tr><td align="left">privacy_notice_acknowledged_at</td><td align="left">DATETIME</td></tr>
+    <tr><td align="left">setup_completed_at</td><td align="left">DATETIME</td></tr>
+    </table>>];
+
+  journal_entries [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+    <tr><td colspan="2" bgcolor="#e6f4ea"><b>journal_entries</b></td></tr>
+    <tr><td align="left"><b>PK</b> id</td><td align="left" port="id">INTEGER</td></tr>
+    <tr><td align="left" port="profile"><b>FK</b> profile_id</td><td align="left">INTEGER</td></tr>
+    <tr><td align="left">created_at</td><td align="left">DATETIME</td></tr>
+    <tr><td align="left">duration_seconds</td><td align="left">INTEGER</td></tr>
+    <tr><td align="left">target_language</td><td align="left">TEXT</td></tr>
+    <tr><td align="left">audio_path</td><td align="left">TEXT</td></tr>
+    <tr><td align="left">transcript</td><td align="left">TEXT NULL</td></tr>
+    <tr><td align="left">transcription_status</td><td align="left">TEXT (pending · complete)</td></tr>
+    </table>>];
+
+  feedback_results [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+    <tr><td colspan="2" bgcolor="#e6f4ea"><b>feedback_results</b></td></tr>
+    <tr><td align="left"><b>PK</b> id</td><td align="left" port="id">INTEGER</td></tr>
+    <tr><td align="left" port="entry"><b>FK</b> entry_id</td><td align="left">INTEGER UNIQUE</td></tr>
+    <tr><td align="left">created_at</td><td align="left">DATETIME</td></tr>
+    <tr><td align="left">profile_update_applied</td><td align="left">BOOLEAN</td></tr>
+    </table>>];
+
+  suggestions [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+    <tr><td colspan="2" bgcolor="#e6f4ea"><b>suggestions</b></td></tr>
+    <tr><td align="left"><b>PK</b> id</td><td align="left">INTEGER</td></tr>
+    <tr><td align="left" port="feedback"><b>FK</b> feedback_id</td><td align="left">INTEGER</td></tr>
+    <tr><td align="left">category</td><td align="left">TEXT (grammar · vocabulary)</td></tr>
+    <tr><td align="left">original_text</td><td align="left">TEXT</td></tr>
+    <tr><td align="left">suggested_text</td><td align="left">TEXT</td></tr>
+    <tr><td align="left">explanation</td><td align="left">TEXT</td></tr>
+    <tr><td align="left">position</td><td align="left">INTEGER</td></tr>
+    </table>>];
+
+  learning_patterns [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4" bgcolor="white">
+    <tr><td colspan="2" bgcolor="#e6f4ea"><b>learning_patterns</b></td></tr>
+    <tr><td align="left"><b>PK</b> id</td><td align="left">INTEGER</td></tr>
+    <tr><td align="left" port="profile"><b>FK</b> profile_id</td><td align="left">INTEGER</td></tr>
+    <tr><td align="left">category</td><td align="left">TEXT (grammar · vocabulary)</td></tr>
+    <tr><td align="left">pattern</td><td align="left">TEXT</td></tr>
+    <tr><td align="left">occurrences</td><td align="left">INTEGER</td></tr>
+    <tr><td align="left">last_seen_at</td><td align="left">DATETIME</td></tr>
+    </table>>];
+
+  // one-to-many: tee (exactly one) at the parent, crow (many) at the child
+  learner_profiles:id:e -> journal_entries:profile:w   [arrowtail=teetee, arrowhead=crowodot];
+  journal_entries:id:e  -> feedback_results:entry:w    [arrowtail=teetee, arrowhead=teeodot, label="0..1"];
+  feedback_results:id:e -> suggestions:feedback:w      [arrowtail=teetee, arrowhead=crowodot];
+  learner_profiles:id:e -> learning_patterns:profile:w [arrowtail=teetee, arrowhead=crowodot];
+}

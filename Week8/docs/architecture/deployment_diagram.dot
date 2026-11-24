@@ -1,0 +1,40 @@
+// Talk2Me — UML deployment diagram (SAD 7).
+// Planned deployment (nothing is deployed yet; hosting provider undecided).
+// Render: dot -Tpng -Gdpi=150 deployment_diagram.dot -o deployment_diagram.png
+digraph Talk2MeDeployment {
+  graph [fontname="DejaVu Sans", fontsize=12, rankdir=LR, bgcolor="white", pad=0.3, nodesep=0.6, ranksep=1.3,
+         label=<<b>Talk2Me — deployment diagram (planned)</b><br/><font point-size="10">UML nodes, execution environments and artifacts · audio never leaves the «device» node</font>>,
+         labelloc=t, labeljust=l];
+  node  [fontname="DejaVu Sans", fontsize=10, shape=box3d, style=filled, fillcolor="#f7f7f7", color="#333333"];
+  edge  [fontname="DejaVu Sans", fontsize=9, color="#333333", arrowhead=none, penwidth=1.3];
+
+  phone [label=<<table border="0" cellspacing="6" cellpadding="4">
+    <tr><td align="left"><font point-size="9">«device»</font><br/><b>Learner's smartphone</b><br/><font point-size="9">iOS 15+ / Android 10+</font></td></tr>
+    <tr><td border="1" bgcolor="white" align="left" cellpadding="6">
+      <table border="0" cellspacing="4" cellpadding="3">
+        <tr><td align="left"><font point-size="9">«executionEnvironment»</font><br/><b>Flutter engine (Dart runtime)</b></td></tr>
+        <tr><td border="1" bgcolor="#fdfdfd" align="left"><font point-size="9">«artifact»</font><br/>talk2me.apk / Talk2Me.ipa</td></tr>
+        <tr><td border="1" bgcolor="#fdfdfd" align="left"><font point-size="9">«artifact»</font><br/>Whisper tiny/base model file</td></tr>
+        <tr><td border="1" bgcolor="#fdfdfd" align="left"><font point-size="9">«artifact»</font><br/>talk2me.sqlite (drift database)</td></tr>
+        <tr><td border="1" bgcolor="#fdfdfd" align="left"><font point-size="9">«artifact»</font><br/>journal audio files</td></tr>
+      </table></td></tr>
+    </table>>];
+
+  server [label=<<table border="0" cellspacing="6" cellpadding="4">
+    <tr><td align="left"><font point-size="9">«device»</font><br/><b>Cloud host</b><br/><font point-size="9">PaaS: Railway or Render (undecided)</font></td></tr>
+    <tr><td border="1" bgcolor="white" align="left" cellpadding="6">
+      <table border="0" cellspacing="4" cellpadding="3">
+        <tr><td align="left"><font point-size="9">«executionEnvironment»</font><br/><b>Python 3 · Uvicorn (ASGI)</b></td></tr>
+        <tr><td border="1" bgcolor="#fdfdfd" align="left"><font point-size="9">«artifact»</font><br/>talk2me_backend (FastAPI app)</td></tr>
+      </table></td></tr>
+    <tr><td align="left"><font point-size="9">stateless · no database · no audio · no transcript logging</font></td></tr>
+    </table>>];
+
+  anthropic [label=<<table border="0" cellspacing="6" cellpadding="4">
+    <tr><td align="left"><font point-size="9">«device» «external»</font><br/><b>Anthropic API</b></td></tr>
+    <tr><td border="1" bgcolor="white" align="left"><font point-size="9">«executionEnvironment»</font><br/>Claude Messages API</td></tr>
+    </table>>];
+
+  phone -> server [label=<<font point-size="9">«HTTPS»<br/>POST /feedback<br/>transcript + profile summary</font>>, taillabel="*", headlabel="1"];
+  server -> anthropic [label=<<font point-size="9">«HTTPS»<br/>Messages API</font>>, taillabel="1", headlabel="1"];
+}

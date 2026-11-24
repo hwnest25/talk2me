@@ -1,0 +1,34 @@
+// Talk2Me — high-level MVC diagram (SAD 5.1).
+// Planned design (no application code exists yet). Render: dot -Tpng -Gdpi=150 mvc_high_level.dot -o mvc_high_level.png
+digraph Talk2MeMVC {
+  graph [fontname="DejaVu Sans", fontsize=12, rankdir=LR, bgcolor="white", pad=0.3, nodesep=0.6, ranksep=0.9,
+         label=<<b>Talk2Me — MVC at a glance (planned)</b><br/><font point-size="10">Flutter MVVM read as MVC: widgets = View · ChangeNotifier view models = Controller · repositories, services and data = Model</font>>,
+         labelloc=t, labeljust=l];
+  node  [fontname="DejaVu Sans", fontsize=10, shape=box, style="rounded,filled", penwidth=1.5];
+  edge  [fontname="DejaVu Sans", fontsize=9, color="#333333", arrowhead=vee];
+
+  learner [shape=none, style="", label=<<table border="0" cellpadding="2"><tr><td><font point-size="22">☺</font></td></tr><tr><td><b>Learner</b></td></tr></table>>];
+
+  view [fillcolor="#e8f1fb", color="#3b78c3", label=<<b>VIEW</b><br/><font point-size="9">Flutter widgets</font><br/><br/>OnboardingScreen<br/>JournalScreen<br/>FeedbackScreen>];
+
+  controller [fillcolor="#fdf3e1", color="#c98a1b", label=<<b>CONTROLLER</b><br/><font point-size="9">view models (extend ChangeNotifier)</font><br/><br/>OnboardingViewModel<br/>RecordingViewModel<br/>FeedbackViewModel>];
+
+  model [fillcolor="#e6f4ea", color="#3a8f55", label=<<b>MODEL</b><br/><font point-size="9">repositories · services · domain data</font><br/><br/>Profile / Journal / Feedback repositories<br/>Audio, Transcription, FeedbackApi services<br/>AppDatabase (drift)>];
+
+  node [shape=cylinder, style=filled, fillcolor="#fafafa", color="#555555", penwidth=1];
+  db      [label=<<b>SQLite</b><br/><font point-size="9">on device</font>>];
+  node [shape=box3d];
+  whisper [label=<<b>Whisper model</b><br/><font point-size="9">on device</font>>];
+  backend [label=<<b>FastAPI backend</b><br/><font point-size="9">→ Anthropic Claude</font>>];
+
+  learner -> view [label="taps, speaks"];
+  view -> controller [label="user events\n(finishSetup, stopAndSave,\nrequestFeedback)"];
+  controller -> view [label="notifyListeners()\n→ widgets rebuild", style=dashed];
+  controller -> model [label="calls repository\nmethods"];
+  model -> controller [label="returns domain\nobjects / errors", style=dashed];
+  model -> db      [label="read / write"];
+  model -> whisper [label="audio → text"];
+  model -> backend [label="HTTPS: transcript +\nprofile summary (no audio)"];
+
+  { rank=same; db; whisper; backend; }
+}

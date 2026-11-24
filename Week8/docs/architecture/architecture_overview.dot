@@ -1,0 +1,74 @@
+// Talk2Me — architectural UML package diagram of the planned code base.
+// Planned design (no application code exists yet). Render: dot -Tpng -Gdpi=150 architecture_overview.dot -o architecture_overview.png
+digraph Talk2MeArchitecture {
+  graph [fontname="DejaVu Sans", fontsize=12, rankdir=TB, compound=true, bgcolor="white", pad=0.3, nodesep=0.5, ranksep=0.7, newrank=true,
+         label=<<b>Talk2Me — architectural overview (planned)</b><br/><font point-size="10">UML package diagram · dashed arrows = «use» dependencies · two deployable parts: mobile app and feedback backend</font>>,
+         labelloc=t, labeljust=l];
+  node  [fontname="DejaVu Sans", fontsize=10, shape=tab, style=filled, fillcolor=white, margin="0.15,0.08"];
+  edge  [fontname="DejaVu Sans", fontsize=9, style=dashed, arrowhead=vee, color="#333333"];
+
+  subgraph cluster_app {
+    label=<<b>«subsystem» talk2me_app</b>  (Flutter / Dart)>; labeljust=l; style="rounded"; color="#333333"; penwidth=1.5;
+
+    subgraph cluster_ui {
+      label=<<b>ui</b>  ·  View + Controller>; labeljust=l; style="filled,rounded"; fillcolor="#f4f4f4"; color="#777777";
+      onboarding [label=<<b>onboarding</b><br/><font point-size="9">widgets · view_models</font>>];
+      journal    [label=<<b>journal</b><br/><font point-size="9">widgets · view_models</font>>];
+      feedback   [label=<<b>feedback</b><br/><font point-size="9">widgets · view_models</font>>];
+      core_ui    [label=<<b>core</b><br/><font point-size="9">theme · shared widgets</font>>];
+    }
+
+    subgraph cluster_data {
+      label=<<b>data</b>  ·  Model>; labeljust=l; style="filled,rounded"; fillcolor="#f4f4f4"; color="#777777";
+      repositories [label=<<b>repositories</b><br/><font point-size="9">profile · journal · feedback</font>>];
+      services     [label=<<b>services</b><br/><font point-size="9">audio · transcription · feedback_api</font>>];
+      database     [label=<<b>database</b><br/><font point-size="9">drift tables · DAOs</font>>];
+    }
+
+    domain [label=<<b>domain/models</b><br/><font point-size="9">LearnerProfile · JournalEntry · Feedback</font>>];
+  }
+
+  subgraph cluster_backend {
+    label=<<b>«subsystem» talk2me_backend</b>  (Python / FastAPI)>; labeljust=l; style="rounded"; color="#333333"; penwidth=1.5;
+    routers  [label=<<b>routers</b><br/><font point-size="9">POST /feedback</font>>];
+    schemas  [label=<<b>schemas</b><br/><font point-size="9">Pydantic request / response</font>>];
+    bservices [label=<<b>services</b><br/><font point-size="9">claude_feedback</font>>];
+  }
+
+  // external libraries and systems
+  node [shape=component, fillcolor="#fafafa"];
+  whisper   [label=<«library»<br/><b>Whisper (on-device)</b>>];
+  sqlite    [label=<«library»<br/><b>SQLite via drift</b>>];
+  record    [label=<«library»<br/><b>audio recorder plugin</b>>];
+  anthropic [label=<«external system»<br/><b>Anthropic Claude API</b>>];
+
+  // app-internal dependencies
+  onboarding -> repositories;
+  journal    -> repositories;
+  feedback   -> repositories;
+  onboarding -> core_ui;
+  feedback   -> core_ui;
+  repositories -> services;
+  repositories -> database;
+  repositories -> domain;
+  onboarding -> domain [style=invis];
+
+  // app to libraries
+  services -> whisper;
+  services -> record;
+  database -> sqlite;
+
+  // app to backend (network)
+  services -> routers [style=solid, arrowhead=vee, label="  HTTPS / JSON\n  transcript + profile summary", lhead=cluster_backend];
+
+  // backend-internal
+  routers   -> schemas;
+  routers   -> bservices;
+  bservices -> schemas;
+  bservices -> anthropic [style=solid, label="  HTTPS"];
+
+  { rank=same; onboarding; journal; feedback; core_ui; }
+  { rank=same; repositories; }
+  { rank=same; services; database; domain; }
+  { rank=same; whisper; record; sqlite; routers; }
+}
