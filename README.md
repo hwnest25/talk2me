@@ -13,6 +13,7 @@ Elaboration. This repository contains requirements, diagrams and 16 acceptance s
 ## Start reading
 
 - [Software Requirements Specification](docs/SoftwareRequirementSpecification.md): scope, constraints and open decisions.
+- [Software Architecture Document](docs/SoftwareArchitectureDocument.md): planned MVC structure, deployment and database model.
 - [UC-O01 — Set up a learner profile](docs/use_cases/UC-O01_SetUpLearnerProfile.md).
 - [UC-J01 — Record a spoken journal entry](docs/use_cases/UC-J01_RecordSpokenJournalEntry.md).
 - [UC-F01 — Receive language feedback](docs/use_cases/UC-F01_ReceiveLanguageFeedback.md).
