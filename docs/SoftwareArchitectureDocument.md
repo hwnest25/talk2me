@@ -82,7 +82,7 @@ The nearest equivalent is **drift**, the SQLite library we plan to use. Tables a
 
 ![Overall use case diagram](diagrams/use_case_diagram.png)
 
-Blue: product Phase 1 (December delivery). Purple: product Phase 2.
+Blue: December delivery. Grey: later (wider Phase 1, Phase 2 and administration).
 
 ### 4.1 Use-case realisations
 
